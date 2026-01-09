@@ -23,5 +23,41 @@
         "@zenitPlatformGravity",
         "app/storefront/dist/assets"
     ],
-    "configInheritance": ["@Storefront", "@zenitPlatformGravity"]
+    "configInheritance": ["@Storefront", "@zenitPlatformGravity"],
+    "config": {
+        "blocks": {
+          "subGroups": {
+              "label": {
+                "en-GB": "Configurator",
+                "de-DE": "Konfigurator"
+              }
+          }
+        },
+        "sections": {
+          "subGroups": {
+            "label": {
+              "en-GB": "Subgroups",
+              "de-DE": "Untergruppen"
+            }
+          }
+        },
+        "fields": {
+          "activateSubGroups": {
+            "label": {
+              "en-GB": "Activate subgroups",
+              "de-DE": "Aktiviere Untergruppen"
+            },
+            "helpText": {
+              "en-GB": "If active, the groups of the product configurator will be splittet into subgroups. But only if the settings are set in property fields",
+              "de-DE": "Wenn aktiviert, werden die Gruppen vom Produktkonfigurator in Untergruppen aufgesplittet, falls diese bei den Eigenschaften eingepflegt sind"
+            },
+            "type": "switch",
+            "value": true,
+            "editable": true,
+            "tab": "detail",
+            "block": "subGroups",
+            "section": "subGroups"
+          }
+        }
+    }
 }

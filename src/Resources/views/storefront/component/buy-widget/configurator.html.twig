@@ -1,0 +1,104 @@
+{% sw_extends '@Storefront/storefront/component/buy-widget/configurator.html.twig' %}
+
+{% block buy_widget_configurator_group %}
+    {{ app.session.set('scheCurrentOptionGroup', null) }}
+    {{ app.session.set('hasOptionGroups', false) }}
+    {% if group.extensions.scheOptionGroups is defined and group.extensions.scheOptionGroups is not empty %}
+        {{ app.session.set('hasOptionGroups', true) }}
+        {{ app.session.set('scheOptionGroups', group.extensions.scheOptionGroups) }}
+    {% endif %}
+    {{ parent() }}
+{% endblock %}
+
+{% block buy_widget_configurator_options %}
+    {% if app.session.get('hasOptionGroups') and theme_config('activateSubGroups')%}
+        <div id="option-group-accordion" class="option-group-accordion">
+            {% set scheOptionGroups = app.session.get('scheOptionGroups') %}
+            {% set allOptions = cloneCollection(group.options) %}
+            {{ clearCollection(group.options) }}
+            {% for optionGroup in scheOptionGroups %}
+                <div class="accordion-item">
+                    {% set isGroupActive = false %}
+                    {% for option in allOptions|filter(option => option.extensions.scheOptionGroup is defined and option.extensions.scheOptionGroup == optionGroup) %}
+                        {{ addToCollection(group.options, option) }}
+                        {% if option.id in page.product.optionIds %}
+                            {% set isGroupActive = true %}
+                        {% endif %}
+                    {% endfor %}
+
+                    <div class="accordion-item-header{% if loop.first %} first-sub-group{% endif %}" id="{{ optionGroup.id }}">
+                        <a class="accordion-item-link"
+                           data-bs-toggle="collapse"
+                           data-bs-target="#collapse-{{ optionGroup.id }}"
+                           aria-expanded="{% if isGroupActive %}true{% else %}false{% endif %}"
+                           aria-controls="collapse-{{ optionGroup.id }}">
+                            {{ optionGroup.translated.title }}
+                        </a>
+                    </div>
+
+                    <div id="collapse-{{ optionGroup.id }}"
+                         class="option-group-container collapse {% if isGroupActive %}show{% endif %}"
+                         aria-labelledby="{{ optionGroup.id }}"
+                         data-bs-parent="#option-group-accordion">
+
+                        <div class="accordion-item-body">
+                            {{ optionGroup.translated.description | raw }}
+                        </div>
+                        {{ parent() }}
+                    </div>
+                </div>
+                {{ clearCollection(group.options) }}
+            {% endfor %}
+        </div>
+    {% else %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}
+
+{% block buy_widget_configurator_option_radio_label %}
+    <label
+            class="product-detail-configurator-option-label{% if isCombinableCls %} {{ isCombinableCls }}{% endif %} is-display-{{ displayType }}"
+            {% if displayType == 'color' and option.colorHexCode %}
+                {% set options = option.colorHexCode | split(" ") %}
+                {% set optionsLength = options | length %}
+                {% if optionsLength == 1 %}
+                    style="background-color: {{ options.0 }}"
+                {% elseif optionsLength > 1 %}
+                    {% set gradient = 'linear-gradient(90deg' %}
+                    {% set divisor = 100/optionsLength | round %}
+                    {% for item in options %}
+                        {% if not loop.first and not loop.last %}
+                            {% set gradient = gradient~', '~item~' '~divisor~'%' %}
+                            {% set divisor = divisor + divisor %}
+                        {% endif %}
+                        {% set gradient = gradient~', '~item~' '~divisor~'%' %}
+                    {% endfor %}
+                    {% set gradient = gradient~')' %}
+                    style="background: {{ gradient }}"
+                {% endif %}
+            {% endif %}
+            title="{{ option.translated.name }}"
+            for="{{ optionIdentifier }}"
+            {% if media %}
+                {% set colorPreviewPluginOptions = {
+                    title: media.title,
+                    alt: media.alt,
+                    url: media.url
+                } %}
+                data-sche-color-preview-plugin-options="{{ colorPreviewPluginOptions|json_encode }}"
+            {% endif %}
+    >
+
+        {% if displayType == 'media' and media %}
+            {% block buy_widget_configurator_option_radio_label_media %}
+                {{ parent() }}
+            {% endblock %}
+        {% elseif displayType == 'text' or
+            (displayType == 'media' and not media) or
+            (displayType == 'color' and not option.colorHexCode) %}
+            {% block buy_widget_configurator_option_radio_label_text %}
+                {{ parent() }}
+            {% endblock %}
+        {% endif %}
+    </label>
+{% endblock %}
