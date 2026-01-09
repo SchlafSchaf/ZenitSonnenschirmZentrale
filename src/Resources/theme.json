@@ -1,0 +1,27 @@
+{
+    "name": "Sonnenschirm Zentrale | Gravity child theme",
+    "author": "Schirmhelden GmbH",
+    "previewMedia": "config/preview.png",
+    "views": [
+        "@Storefront",
+        "@zenitPlatformGravity",
+        "@Plugins",
+        "@zenitSonnenschirmZentrale"
+    ],
+    "style": [
+        "app/storefront/src/scss/overrides.scss",
+        "@zenitPlatformGravity",
+        "app/storefront/src/scss/base.scss"
+    ],
+    "script": [
+        "@Storefront",
+        "@zenitPlatformGravity",
+        "app/storefront/dist/storefront/js/zenit-sonnenschirm-zentrale/zenit-sonnenschirm-zentrale.js"
+    ],
+    "asset": [
+        "@Storefront",
+        "@zenitPlatformGravity",
+        "app/storefront/dist/assets"
+    ],
+    "configInheritance": ["@Storefront", "@zenitPlatformGravity"]
+}

@@ -1,0 +1,33 @@
+{
+    "name": "zenit/gravity-sonnenschirm-zentrale",
+    "description": "Sonnenschirm Zentrale",
+    "version": "1.0.0",
+    "type": "shopware-platform-plugin",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Schirmhelden GmbH"
+        }
+    ],
+    "require": {
+        "shopware/core": "*",
+        "shopware/storefront": "*",
+        "zenit/gravity": "*"
+    },
+    "extra": {
+        "shopware-plugin-class": "zenit\\SonnenschirmZentrale\\zenitSonnenschirmZentrale",
+        "label": {
+            "de-DE": "Sonnenschirm Zentrale | Gravity Child-Theme",
+            "en-GB": "Sonnenschirm Zentrale | Gravity child theme"
+        },
+        "description": {
+            "de-DE": "Sonnenschirm Zentrale | Child-Theme von Gravity",
+            "en-GB": "Sonnenschirm Zentrale | Child theme of Gravity"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "zenit\\SonnenschirmZentrale\\": "src/"
+        }
+    }
+}
