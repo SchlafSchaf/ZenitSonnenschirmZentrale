@@ -11,7 +11,7 @@
 {% endblock %}
 
 {% block buy_widget_configurator_options %}
-    {% if app.session.get('hasOptionGroups') and theme_config('activateSubGroups')%}
+    {% if app.session.get('hasOptionGroups') and theme_config('sche-activate-sub-groups')%}
         <div id="option-group-accordion" class="option-group-accordion">
             {% set scheOptionGroups = app.session.get('scheOptionGroups') %}
             {% set allOptions = cloneCollection(group.options) %}

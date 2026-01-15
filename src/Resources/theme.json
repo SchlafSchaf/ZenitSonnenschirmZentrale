@@ -26,23 +26,41 @@
     "configInheritance": ["@Storefront", "@zenitPlatformGravity"],
     "config": {
         "blocks": {
-          "subGroups": {
+          "sche-sub-groups": {
               "label": {
                 "en-GB": "Configurator",
                 "de-DE": "Konfigurator"
               }
+          },
+          "sche-description-icons": {
+            "label": {
+              "en-GB": "Description Icons",
+              "de-DE": "Beschreibung Icons"
+            }
           }
         },
         "sections": {
-          "subGroups": {
+          "sche-sub-groups": {
             "label": {
               "en-GB": "Subgroups",
               "de-DE": "Untergruppen"
             }
+          },
+          "sche-icons-colors": {
+            "label": {
+              "en-GB": "Icons instant delivery",
+              "de-DE": "Icons Sofortlieferprogramm"
+            }
+          },
+          "sche-icons-attachment": {
+            "label": {
+              "en-GB": "Icons attachment",
+              "de-DE": "Icons Befestigung"
+            }
           }
         },
         "fields": {
-          "activateSubGroups": {
+          "sche-activate-sub-groups": {
             "label": {
               "en-GB": "Activate subgroups",
               "de-DE": "Aktiviere Untergruppen"
@@ -55,8 +73,244 @@
             "value": true,
             "editable": true,
             "tab": "detail",
-            "block": "subGroups",
-            "section": "subGroups"
+            "block": "sche-sub-groups",
+            "section": "sche-sub-groups"
+          },
+          "sche-color-151": {
+            "label": {
+              "en-GB": "151 Ash",
+              "de-DE": "151 Ash"
+            },
+            "type": "media",
+            "editable": true,
+            "tab": "detail",
+            "block": "sche-description-icons",
+            "section": "sche-icons-colors"
+          },
+          "sche-color-156": {
+            "label": {
+              "en-GB": "156 Pale Grey",
+              "de-DE": "156 Pale Grey"
+            },
+            "type": "media",
+            "editable": true,
+            "tab": "detail",
+            "block": "sche-description-icons",
+            "section": "sche-icons-colors"
+          },
+          "sche-color-157": {
+            "label": {
+              "en-GB": "157 Stone Grey",
+              "de-DE": "157 Stone Grey"
+            },
+            "type": "media",
+            "editable": true,
+            "tab": "detail",
+            "block": "sche-description-icons",
+            "section": "sche-icons-colors"
+          },
+          "sche-color-158": {
+            "label": {
+              "en-GB": "158 Off White",
+              "de-DE": "158 Off White"
+            },
+            "type": "media",
+            "editable": true,
+            "tab": "detail",
+            "block": "sche-description-icons",
+            "section": "sche-icons-colors"
+          },
+          "sche-color-404": {
+            "label": {
+              "en-GB": "404 White",
+              "de-DE": "404 White"
+            },
+            "type": "media",
+            "editable": true,
+            "tab": "detail",
+            "block": "sche-description-icons",
+            "section": "sche-icons-colors"
+          },
+          "sche-color-417": {
+            "label": {
+              "en-GB": "417 Ocean",
+              "de-DE": "417 Ocean"
+            },
+            "type": "media",
+            "editable": true,
+            "tab": "detail",
+            "block": "sche-description-icons",
+            "section": "sche-icons-colors"
+          },
+          "sche-color-420": {
+            "label": {
+              "en-GB": "420 Smoke",
+              "de-DE": "420 Smoke"
+            },
+            "type": "media",
+            "editable": true,
+            "tab": "detail",
+            "block": "sche-description-icons",
+            "section": "sche-icons-colors"
+          },
+          "sche-color-422": {
+            "label": {
+              "en-GB": "422 Cream",
+              "de-DE": "422 Cream"
+            },
+            "type": "media",
+            "editable": true,
+            "tab": "detail",
+            "block": "sche-description-icons",
+            "section": "sche-icons-colors"
+          },
+          "sche-color-453": {
+            "label": {
+              "en-GB": "453 Vanilla",
+              "de-DE": "453 Vanilla"
+            },
+            "type": "media",
+            "editable": true,
+            "tab": "detail",
+            "block": "sche-description-icons",
+            "section": "sche-icons-colors"
+          },
+          "sche-color-461": {
+            "label": {
+              "en-GB": "461 Taupe",
+              "de-DE": "461 Taupe"
+            },
+            "type": "media",
+            "editable": true,
+            "tab": "detail",
+            "block": "sche-description-icons",
+            "section": "sche-icons-colors"
+          },
+          "sche-color-501": {
+            "label": {
+              "en-GB": "501 Granite",
+              "de-DE": "501 Granite"
+            },
+            "type": "media",
+            "editable": true,
+            "tab": "detail",
+            "block": "sche-description-icons",
+            "section": "sche-icons-colors"
+          },
+          "sche-color-502": {
+            "label": {
+              "en-GB": "502 Thunder",
+              "de-DE": "502 Thunder"
+            },
+            "type": "media",
+            "editable": true,
+            "tab": "detail",
+            "block": "sche-description-icons",
+            "section": "sche-icons-colors"
+          },
+          "sche-color-523": {
+            "label": {
+              "en-GB": "523 Champagne",
+              "de-DE": "523 Champagne"
+            },
+            "type": "media",
+            "editable": true,
+            "tab": "detail",
+            "block": "sche-description-icons",
+            "section": "sche-icons-colors"
+          },
+          "sche-color-556": {
+            "label": {
+              "en-GB": "556 Alabaster",
+              "de-DE": "556 Alabaster"
+            },
+            "type": "media",
+            "editable": true,
+            "tab": "detail",
+            "block": "sche-description-icons",
+            "section": "sche-icons-colors"
+          },
+          "sche-color-686": {
+            "label": {
+              "en-GB": "686 Urban Clay",
+              "de-DE": "686 Urban Clay"
+            },
+            "type": "media",
+            "editable": true,
+            "tab": "detail",
+            "block": "sche-description-icons",
+            "section": "sche-icons-colors"
+          },
+          "sche-color-803": {
+            "label": {
+              "en-GB": "803 Linen",
+              "de-DE": "803 Linen"
+            },
+            "type": "media",
+            "editable": true,
+            "tab": "detail",
+            "block": "sche-description-icons",
+            "section": "sche-icons-colors"
+          },
+          "sche-ground-sleeve": {
+            "label": {
+              "en-GB": "Ground sleeve",
+              "de-DE": "Bodenhülse"
+            },
+            "type": "media",
+            "editable": true,
+            "fullWidth": true,
+            "tab": "detail",
+            "block": "sche-description-icons",
+            "section": "sche-icons-attachment"
+          },
+          "sche-balcony-fastening": {
+            "label": {
+              "en-GB": "Balcony Fastening",
+              "de-DE": "Balkonbefestigung"
+            },
+            "type": "media",
+            "editable": true,
+            "fullWidth": true,
+            "tab": "detail",
+            "block": "sche-description-icons",
+            "section": "sche-icons-attachment"
+          },
+          "sche-wall-bracket": {
+            "label": {
+              "en-GB": "Wall bracket",
+              "de-DE": "Mauerkonsole"
+            },
+            "type": "media",
+            "editable": true,
+            "fullWidth": true,
+            "tab": "detail",
+            "block": "sche-description-icons",
+            "section": "sche-icons-attachment"
+          },
+          "sche-lawn-pike": {
+            "label": {
+              "en-GB": "Lawn pike",
+              "de-DE": "Rasenspitz"
+            },
+            "type": "media",
+            "editable": true,
+            "fullWidth": true,
+            "tab": "detail",
+            "block": "sche-description-icons",
+            "section": "sche-icons-attachment"
+          },
+          "sche-stand-frame": {
+            "label": {
+              "en-GB": "Stand frame",
+              "de-DE": "Standrahmen"
+            },
+            "type": "media",
+            "editable": true,
+            "fullWidth": true,
+            "tab": "detail",
+            "block": "sche-description-icons",
+            "section": "sche-icons-attachment"
           }
         }
     }
