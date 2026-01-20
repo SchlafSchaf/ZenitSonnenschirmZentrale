@@ -1,0 +1,13 @@
+// Define icons to use
+
+
+@mixin sche-set-uni-content($content, $color: black, $scale: 1, $margin-right: .5rem, $vertical-align: 0, $horizontal-align: 0 ) {
+  content: $content;
+  display: inline-block;
+  position: relative;
+  margin-right: $margin-right;
+  top: $vertical-align;
+  left: $horizontal-align;
+  color: $color;
+  transform: scale($scale);
+}

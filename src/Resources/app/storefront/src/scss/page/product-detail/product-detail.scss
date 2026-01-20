@@ -63,22 +63,30 @@
   }
 }
 
-.soze-benefits-description {
-  @include clearfix;
-  margin-bottom: 1.875rem;
-  img {
-    height: 193px;
-    width: 250px;
-    float: left;
+
+.soze-description-sidebar-container {
+    border: 2px solid $sw-border-color;
+    padding: 1.25rem;
+    margin-bottom: 1.25rem;
+    border-radius: 1rem;
+}
+
+.soze-description-sidebar-table {
+  .soze-description-sidebar-table-row {
+    border-bottom: 1px solid $sw-border-color;
+
+    td {
+      padding: 0.625rem;
+    }
   }
-}
 
-.product--description > .soze-benefits-description {
-  margin-top: 3.125rem;
-}
+  .soze-description-sidebar-table-row:last-child {
+    border-bottom: none;
+  }
 
-.product--description > .soze-benefits-description ~ .soze-benefits-description {
-  margin-top: 0;
+  .soze-description-sidebar-table-image {
+    vertical-align: top;
+  }
 }
 
 @media screen and (max-width: 580px) {
@@ -100,10 +108,8 @@
 
 @media screen and (max-width: 650px) {
   .soze-benefits-description {
-    width: 100%;
+    //width: 100%;
     img {
-      width: 40%;
-      height: 40%;
     }
   }
   .soze-made-in-germany img {
