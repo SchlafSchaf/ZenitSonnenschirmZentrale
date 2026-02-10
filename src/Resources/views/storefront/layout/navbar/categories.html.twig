@@ -1,0 +1,28 @@
+{% sw_extends '@Storefront/storefront/layout/navbar/categories.html.twig' %}
+
+{% block layout_navbar_categories_item_link %}
+    {{ parent() }}
+
+    {#  START: CB-13336 - If checkbox 'show in Navigation' is set on product, then it will appear under its parent node #}
+    {% if treeItem.extensions.navigationProducts %}
+        {% set productLevel = level + 1 %}
+        <div class="navigation-flyout-categories is-level-{{ productLevel }}">
+            {% for productItem in treeItem.extensions.navigationProducts|sort((a, b) => a.name <=> b.name) %}
+                <div class="col-12 navigation-flyout-col">
+                    {% set productId = productItem.id %}
+                    {% set productName = productItem.name %}
+                    {% set productLink = seoUrl('frontend.detail.page', { 'productId': productId   }) %}
+                    <a class="nav-item nav-link navigation-flyout-link is-level-{{ productLevel }}"
+                       href="{{ productId }}"
+                       itemprop="url"
+                       title="{{ productName }}">
+                        <span itemprop="name">{{ productName }}</span>
+                    </a>
+                    <div class="navigation-flyout-categories is-level-{{ productLevel + 1}}"></div>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+    {# END #}
+
+{% endblock %}
