@@ -13,7 +13,7 @@
                     {% set productName = productItem.name %}
                     {% set productLink = seoUrl('frontend.detail.page', { 'productId': productId   }) %}
                     <a class="nav-item nav-link navigation-flyout-link is-level-{{ productLevel }}"
-                       href="{{ productId }}"
+                       href="{{ productLink }}"
                        itemprop="url"
                        title="{{ productName }}">
                         <span itemprop="name">{{ productName }}</span>
