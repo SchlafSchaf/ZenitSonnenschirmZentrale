@@ -1,5 +1,20 @@
 {% sw_extends '@Storefront/storefront/element/cms-element-text.html.twig' %}
 
+{# Placeholder [sche-marken] in a text element = brand logos block (storefront/sche/brand-logos.html.twig),
+   maintained once in the theme and usable in every shopping world #}
+{% block element_text_inner %}
+    {% set content = element.data.content %}
+
+    {% if '[sche-marken]' in content %}
+        {% set brandLogos %}
+            {% sw_include '@Storefront/storefront/sche/brand-logos.html.twig' %}
+        {% endset %}
+        {% set content = content|replace({'<p>[sche-marken]</p>': brandLogos, '[sche-marken]': brandLogos}) %}
+    {% endif %}
+
+    {{ content|raw }}
+{% endblock %}
+
 {# Button of the collapsed text content (RHWeb CMS Elements): shows the configured button text while
    collapsed and "Text einklappen" (snippet sche.cms.collapseClose) while expanded #}
 {% block rhweb_element_text_collapse_button %}

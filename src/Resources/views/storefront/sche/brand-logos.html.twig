@@ -1,0 +1,25 @@
+{#
+    "Unsere Top Marken" - wird in jedem Text-Element der Erlebniswelten an der Stelle des Platzhalters
+    [sche-marken] eingesetzt (views/storefront/element/cms-element-text.html.twig).
+    Logos: dist/assets/sche/logos/<marke>.svg, Aussehen: scss/cms/sche-startseite.scss (.sche-brand-logos)
+#}
+{% set scheBrands = [
+    { logo: 'glatz', name: 'Glatz', url: '/glatz-sonnenschirme-und-ampelschirme.html', title: 'Sonnenschirme und Ampelschirme von Glatz' },
+    { logo: 'may', name: 'May', url: '/may-sonnenschirme-und-ampelschirme.html', title: 'Sonnenschirme und Ampelschirme von May' },
+    { logo: 'bahama', name: 'Bahama', url: '/bahama-gastronomie-und-allwetterschirme.html', title: 'Gastroschirme und Sonnenschirme von Bahama' },
+    { logo: 'caravita', name: 'Caravita', url: '/caravita-sonnenschirme-und-ampelschirme.html', title: 'Sonnenschirme und Ampelschirme von Caravita' },
+    { logo: 'knirps', name: 'Knirps', url: '/knirps-sonnenschirme-und-ampelschirme.html', title: 'Sonnenschirme und Ampelschirme von Knirps' },
+    { logo: 'shademaker', name: 'Shademaker', url: '/shademaker-sonnenschirme-und-ampelschirme.html', title: 'Sonnenschirme und Ampelschirme von Shademaker' }
+] %}
+
+<div class="sche-brand-logos">
+    <div class="sche-brand-logos__headline">{{ 'sche.cms.brandLogosHeadline'|trans|sw_sanitize }}</div>
+    <div class="sche-brand-logos__list">
+        {% for brand in scheBrands %}
+            <a class="sche-brand-logos__item" href="{{ brand.url }}" title="{{ brand.title }}">
+                <span class="sche-brand-logos__logo sche-brand-logos__logo--{{ brand.logo }}"></span>
+                <span class="visually-hidden">{{ brand.name }}</span>
+            </a>
+        {% endfor %}
+    </div>
+</div>

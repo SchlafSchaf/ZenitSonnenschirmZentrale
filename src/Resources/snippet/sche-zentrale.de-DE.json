@@ -1,7 +1,8 @@
 {
     "sche": {
         "cms": {
-            "collapseClose": "Text einklappen"
+            "collapseClose": "Text einklappen",
+            "brandLogosHeadline": "Unsere Top Marken"
         }
     }
 }
