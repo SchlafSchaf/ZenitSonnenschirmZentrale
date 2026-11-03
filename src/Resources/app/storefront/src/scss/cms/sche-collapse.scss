@@ -3,6 +3,23 @@
 // (Einstellung "Inhalt" + Button von RHWeb CMS Elements): ab Tablet-Breite ist der Zusatzinhalt immer
 // sichtbar und der Button ausgeblendet, auf dem Handy klappt der Button ihn auf.
 
+// Button-Text und Pfeil je nach Zustand (views/storefront/element/cms-element-text.html.twig)
+.sche-collapse-toggle {
+    &[aria-expanded="false"] .sche-collapse-toggle__close,
+    &[aria-expanded="true"] .sche-collapse-toggle__open {
+        display: none;
+    }
+
+    .icon {
+        display: inline-flex;
+        transition: transform 0.2s ease;
+    }
+
+    &[aria-expanded="true"] .icon {
+        transform: rotate(180deg);
+    }
+}
+
 .sche-collapse-mobile-only {
     @include media-breakpoint-up(md) {
         .rhweb-collapse-content.collapse {
