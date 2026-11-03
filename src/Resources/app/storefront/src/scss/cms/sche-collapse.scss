@@ -1,0 +1,17 @@
+// Text, der nur auf dem Handy eingeklappt ist.
+// Block-Klasse "sche-collapse-mobile-only" an einem Text-Element mit eingeklapptem Zusatzinhalt
+// (Einstellung "Inhalt" + Button von RHWeb CMS Elements): ab Tablet-Breite ist der Zusatzinhalt immer
+// sichtbar und der Button ausgeblendet, auf dem Handy klappt der Button ihn auf.
+
+.sche-collapse-mobile-only {
+    @include media-breakpoint-up(md) {
+        .rhweb-collapse-content.collapse {
+            display: block;
+            height: auto;
+        }
+
+        .rhweb-element-collapse .rhweb-button {
+            display: none;
+        }
+    }
+}
