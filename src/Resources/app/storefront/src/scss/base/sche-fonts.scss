@@ -1,5 +1,6 @@
 // Roboto Condensed (Schrift der SW5-Zentrale), selbst gehostet statt über Google Fonts.
-// Variable Schrift mit allen Gewichten 100-900 aus github.com/google/fonts (Lizenz: OFL.txt daneben).
+// Variable Schrift mit allen Gewichten 100-900 aus github.com/google/fonts (Lizenz: OFL.txt daneben),
+// mit fonttools auf lateinische Zeichen reduziert und als woff2 gespeichert (83 KB statt 372 KB).
 // Die Schrift selbst wird in der Theme-Konfiguration gesetzt ("Eigene Schriftarten",
 // Schriftname 'Roboto Condensed', sans-serif, Google-Fonts-Import aus) - hier steht nur die Einbindung.
 
@@ -8,5 +9,5 @@
     font-style: normal;
     font-weight: 100 900;
     font-display: swap;
-    src: url("#{$app-css-relative-asset-path}/sche/fonts/roboto-condensed/RobotoCondensed-wght.ttf") format("truetype");
+    src: url("#{$app-css-relative-asset-path}/sche/fonts/roboto-condensed/RobotoCondensed-wght.woff2") format("woff2");
 }
