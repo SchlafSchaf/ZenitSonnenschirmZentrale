@@ -3,6 +3,15 @@
         "cms": {
             "collapseClose": "Show less",
             "brandLogosHeadline": "Our top brands"
+        },
+        "header": {
+            "usp1": "5% discount on prepayment",
+            "usp2": "Trusted Shops buyer protection",
+            "usp3": "Free shipping in DE+AT²",
+            "usp4": "Expert advice from the specialist retailer",
+            "consultingLabel": "Personal advice",
+            "phone": "+ 49 821 - 999 764 00",
+            "phoneLink": "+4982199976400"
         }
     }
 }

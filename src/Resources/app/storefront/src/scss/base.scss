@@ -1,7 +1,10 @@
 @import 'base/sche-fonts';
 
 @import 'abstract/icons';
+@import 'abstract/sche-variables';
 @import 'abstract/sche-typography';
+
+@import 'layout/sche-header';
 
 @import 'page/product-detail/product-detail';
 @import 'page/product-detail/option-group';

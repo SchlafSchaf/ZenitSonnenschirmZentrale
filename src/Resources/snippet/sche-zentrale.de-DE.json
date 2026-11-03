@@ -3,6 +3,15 @@
         "cms": {
             "collapseClose": "Text einklappen",
             "brandLogosHeadline": "Unsere Top Marken"
+        },
+        "header": {
+            "usp1": "5% - Rabatt bei Vorkasse",
+            "usp2": "Trusted Shops Käuferschutz",
+            "usp3": "Versandkostenfrei in DE+AT²",
+            "usp4": "Top Beratung vom Fachhändler",
+            "consultingLabel": "Persönliche Fachberatung",
+            "phone": "+ 49 821 - 999 764 00",
+            "phoneLink": "+4982199976400"
         }
     }
 }

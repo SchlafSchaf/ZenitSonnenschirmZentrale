@@ -1,0 +1,14 @@
+{% sw_extends '@Storefront/storefront/layout/header/header.html.twig' %}
+
+{# Personal consulting with the phone number between logo and search, as in SW5 (snippets sche.header.*); desktop only #}
+{% block zen_layout_header_search_block %}
+    <div class="sche-header-consulting col-auto d-none d-lg-flex">
+        <span class="sche-header-consulting__label">{{ 'sche.header.consultingLabel'|trans|sw_sanitize }}</span>
+        <a class="sche-header-consulting__phone" href="tel:{{ 'sche.header.phoneLink'|trans|striptags }}">
+            {% sw_icon 'phone' style { size: 'sm', class: 'sche-header-consulting__icon' } %}
+            {{ 'sche.header.phone'|trans|sw_sanitize }}
+        </a>
+    </div>
+
+    {{ parent() }}
+{% endblock %}
