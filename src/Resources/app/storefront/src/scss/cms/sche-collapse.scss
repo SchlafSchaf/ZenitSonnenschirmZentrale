@@ -10,7 +10,8 @@
             height: auto;
         }
 
-        .rhweb-element-collapse .rhweb-button {
+        // RHWeb shows the button with ".cms-element-text .rhweb-element-collapse > button[...]"
+        .cms-element-text .rhweb-element-collapse > .rhweb-button {
             display: none;
         }
     }

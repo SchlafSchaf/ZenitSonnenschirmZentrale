@@ -23,7 +23,7 @@ $sche-content-max-width: 1260px;
     }
 }
 
-// Text über den Slider-Bildern
+// Text über den Slider-Bildern (auf dem Handy etwa halb so groß, im Verhältnis zum Banner)
 .sche-slider-text {
     display: flex;
     flex-direction: column;
@@ -32,6 +32,30 @@ $sche-content-max-width: 1260px;
     font-family: $headings-font-family;
     font-weight: 700;
     line-height: 1.1;
+
+    @include media-breakpoint-down(md) {
+        font-size: 0.55rem;
+
+        .sche-slider-text__brand,
+        .sche-slider-text__title,
+        .sche-slider-text__subtitle,
+        .sche-slider-text__button {
+            padding: 0.15rem 0.4rem;
+            font-size: inherit;
+        }
+
+        .sche-slider-text__title {
+            font-size: 0.7rem;
+        }
+
+        .sche-slider-text__title--plain {
+            padding: 0;
+        }
+
+        .sche-slider-text__button {
+            margin-top: 0.35rem;
+        }
+    }
 
     &__brand {
         position: relative;
