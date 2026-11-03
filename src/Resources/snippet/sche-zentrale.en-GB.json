@@ -3,6 +3,18 @@
         "cms": {
             "collapseClose": "Show less",
             "brandLogosHeadline": "Our top brands"
+        },
+        "footer": {
+            "hotlineHeadline": "Advice / Sales",
+            "hotlineIntro": "Do you have questions or would you like expert advice?",
+            "hotlineCall": "Call us:",
+            "phone": "+ 49 821 - 999 764 00",
+            "phoneLink": "+4982199976400",
+            "email": "info@sonnenschirm-zentrale.de",
+            "showroomIntro": "Or make an appointment for personal advice in our showroom in Augsburg",
+            "address": "Sterzinger Str. 12, 86165 Augsburg",
+            "copyright": "Copyright © 2016 - Sonnenschirm-Zentrale.de - All rights reserved",
+            "includeVat": "* All prices incl. VAT plus <a href=\"%url%\">shipping costs</a>, if not stated otherwise."
         }
     }
 }

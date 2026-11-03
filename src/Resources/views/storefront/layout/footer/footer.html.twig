@@ -1,0 +1,80 @@
+{% sw_extends '@Storefront/storefront/layout/footer/footer.html.twig' %}
+
+{# Footer of the Zentrale. Both shops share the snippet set "BASE de-DE", whose footer texts belong to the
+   Sonnenschirm-Shop - the Zentrale uses its own snippets sche.footer.* for the hotline column, the copyright and
+   the VAT notice. #}
+
+{# "Beratung / Verkauf" instead of the shared service hotline headline #}
+{% block zen_layout_footer_navigation_hotline_headline %}
+    <div class="{{ hotlineHiddenClass }} footer-column-headline footer-headline{% if collapsible %} js-footer-column-headline{% endif %}"
+         id="collapseFooterHotlineTitle">
+        <span>{{ 'sche.footer.hotlineHeadline'|trans|sw_sanitize }}</span>
+
+        {{ block('zen_layout_footer_navigation_hotline_icons') }}
+    </div>
+{% endblock %}
+
+{# Contact data of the Zentrale as in SW5: phone, e-mail, showroom #}
+{% block zen_layout_footer_navigation_hotline_content %}
+    <div id="collapseFooterHotline"
+         class="footer-column-content{% if collapsible %} collapse js-footer-column-content{% endif %}"
+         aria-labelledby="collapseFooterHotlineTitle">
+        <div class="footer-column-content-inner sche-footer-contact">
+            <p class="sche-footer-contact__text">{{ 'sche.footer.hotlineIntro'|trans|sw_sanitize }}</p>
+            <p class="sche-footer-contact__label">{{ 'sche.footer.hotlineCall'|trans|sw_sanitize }}</p>
+
+            <a class="sche-footer-contact__item sche-footer-contact__item--phone"
+               href="tel:{{ 'sche.footer.phoneLink'|trans|striptags }}">
+                <span class="sche-footer-contact__icon">{% sw_icon 'phone' style { size: 'sm' } %}</span>
+                {{ 'sche.footer.phone'|trans|sw_sanitize }}
+            </a>
+
+            <a class="sche-footer-contact__item sche-footer-contact__item--mail"
+               href="mailto:{{ 'sche.footer.email'|trans|striptags }}">
+                <span class="sche-footer-contact__icon">{% sw_icon 'envelope' style { size: 'sm' } %}</span>
+                {{ 'sche.footer.email'|trans|sw_sanitize }}
+            </a>
+
+            <p class="sche-footer-contact__label">{{ 'sche.footer.showroomIntro'|trans|sw_sanitize }}</p>
+
+            <span class="sche-footer-contact__item sche-footer-contact__item--address">
+                <span class="sche-footer-contact__icon">{% sw_icon 'marker' style { size: 'sm' } %}</span>
+                {{ 'sche.footer.address'|trans|sw_sanitize }}
+            </span>
+        </div>
+    </div>
+{% endblock %}
+
+{# Copyright of the Zentrale instead of Gravity's "© <year> <shop name> - made with love by Zenit Design" #}
+{% block layout_footer_copyright %}
+    <div class="footer-copyright">
+        {{ 'sche.footer.copyright'|trans|sw_sanitize }}
+    </div>
+{% endblock %}
+
+{# VAT notice and footnotes without the copyright line of the Sonnenschirm-Shop #}
+{% block layout_footer_vat %}
+    {% set cmsPath = 'frontend.cms.page.full' %}
+
+    {% if showVatNotice or showVatNotice is not defined %}
+        <div class="footer-vat">
+            {% set shippingSnippetKey = context.taxState == 'gross' ? 'sche.footer.includeVat' : 'footer.excludeVatTextPage' %}
+            {% set shippingCmsPageId = config('core.basicInformation.shippingPaymentInfoPage') %}
+            {% set shippingUrl = shippingCmsPageId ? path(cmsPath, { id: shippingCmsPageId }) : '#' %}
+
+            {% if footer.navigation and footer.navigation.tree %}
+                {% for root in footer.navigation.tree %}
+                    {% for footerItem in root.children %}
+                        {% if footerItem.category.cmsPageId == shippingCmsPageId and footerItem.category.seoUrl %}
+                            {% set shippingUrl = footerItem.category.seoUrl %}
+                        {% endif %}
+                    {% endfor %}
+                {% endfor %}
+            {% endif %}
+
+            <p>
+                {{ shippingSnippetKey|trans({ '%url%': shippingUrl, '%star%': '' })|raw }}
+            </p>
+        </div>
+    {% endif %}
+{% endblock %}
