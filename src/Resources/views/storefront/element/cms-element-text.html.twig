@@ -1,0 +1,42 @@
+{% sw_extends '@Storefront/storefront/element/cms-element-text.html.twig' %}
+
+{# Placeholder [sche-marken] in a text element = brand logos block (storefront/sche/brand-logos.html.twig),
+   maintained once in the theme and usable in every shopping world #}
+{% block element_text_inner %}
+    {% set content = element.data.content %}
+
+    {% if '[sche-marken]' in content %}
+        {% set brandLogos %}
+            {% sw_include '@Storefront/storefront/sche/brand-logos.html.twig' %}
+        {% endset %}
+        {% set content = content|replace({'<p>[sche-marken]</p>': brandLogos, '[sche-marken]': brandLogos}) %}
+    {% endif %}
+
+    {{ content|raw }}
+{% endblock %}
+
+{# Button of the collapsed text content (RHWeb CMS Elements): shows the configured button text while
+   collapsed and "Text einklappen" (snippet sche.cms.collapseClose) while expanded #}
+{% block rhweb_element_text_collapse_button %}
+    {% set buttonClasses = [
+        'btn',
+        'btn-' ~ (config.btnType.value != 'link' and config.btnOutline.value ? 'outline-' : '') ~ config.btnType.value,
+        'btn-' ~ config.btnSize.value,
+        config.btnBlock.value ? 'btn-block',
+        'rhweb-button',
+        'sche-collapse-toggle'
+    ] %}
+
+    <button class="{{ buttonClasses|filter(c => c)|join(' ') }}"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#{{ collapseIdElement }}"
+            aria-expanded="false"
+            aria-controls="{{ collapseIdElement }}">
+        <span class="sche-collapse-toggle__open">{{ config.btnText.value }}</span>
+        <span class="sche-collapse-toggle__close">{{ 'sche.cms.collapseClose'|trans|sw_sanitize }}</span>
+        <span class="icon icon-default">
+            {{ source('@Storefront/assets/icon/default/arrow-head-down.svg', ignore_missing = true)|sw_icon_cache|raw }}
+        </span>
+    </button>
+{% endblock %}

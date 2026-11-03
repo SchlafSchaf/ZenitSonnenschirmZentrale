@@ -1,5 +1,12 @@
+@import 'base/sche-fonts';
+
 @import 'abstract/icons';
+@import 'abstract/sche-typography';
 
 @import 'page/product-detail/product-detail';
 @import 'page/product-detail/option-group';
 @import 'page/product-detail/accordion';
+
+@import 'cms/sche-startseite';
+@import 'cms/sche-collapse';
+@import 'cms/sche-slider';

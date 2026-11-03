@@ -1,0 +1,370 @@
+// Startseite der Sonnenschirm-Zentrale (Layout "Sonnenschirm-Zentrale | Startseite (SW5)").
+// Nachbau der SW5-Einkaufswelt "Startseite": Slider-Texte, Teaser, Glatz-Block und Markenlogos sind
+// Text-Inhalte der Erlebniswelt, die nur diese Klassen verwenden.
+
+$sche-yellow: #ffba00;
+$sche-grey: #666666;
+$sche-light-grey: #ededed;
+$sche-border-grey: #dadae5;
+$sche-teal: #3fa1b5;
+$sche-content-max-width: 1260px;
+
+// Breite des Inhalts wie in SW5 (Layouts mit der CSS-Klasse "sche-sw5-layout")
+.sche-sw5-layout {
+    .cms-section .boxed {
+        max-width: $sche-content-max-width;
+
+        // the blocks have no side margins (SW5 width), so texts need some space on small screens
+        @include media-breakpoint-down(xl) {
+            padding-right: 1rem;
+            padding-left: 1rem;
+        }
+    }
+}
+
+// Text über den Slider-Bildern; Größe und Farbe lassen sich je Folie und Bildschirmgröße über die Klassen aus
+// sche-slider.scss ändern (--sche-slide-scale, --sche-slide-color)
+.sche-slider-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    text-transform: uppercase;
+    @include sche-headline-font;
+    line-height: 1.1;
+
+    &__brand {
+        position: relative;
+        padding: 0.25rem 1rem;
+        margin-right: auto;
+        margin-bottom: 0.5rem;
+        background: #7a6d68;
+        border: 2px solid #ffffff;
+        color: #ffffff;
+        font-size: calc(clamp(0.875rem, 1.6vw, 1.75rem) * var(--sche-slide-scale, 1));
+        text-transform: none;
+        text-align: center;
+    }
+
+    &__brand-claim {
+        display: block;
+        font-size: 0.45em;
+        font-weight: 400;
+    }
+
+    &__title {
+        margin: 0;
+        padding: 0.25rem 1rem;
+        background: $sche-teal;
+        color: #ffffff;
+        font-size: calc(clamp(1rem, 2.1vw, 2.5rem) * var(--sche-slide-scale, 1));
+
+        @include media-breakpoint-up(md) {
+            white-space: nowrap;
+        }
+    }
+
+    &__title--plain {
+        padding: 0;
+        background: none;
+        color: var(--sche-slide-color, #333333);
+    }
+
+    &__subtitle {
+        margin-top: 0.5rem;
+        padding: 0.25rem 0.75rem;
+        background: #c8c8c8;
+        color: #ffffff;
+        font-size: calc(clamp(0.75rem, 1.3vw, 1.5rem) * var(--sche-slide-scale, 1));
+        letter-spacing: 0.05em;
+    }
+
+    &__button {
+        margin-top: 0.75rem;
+        padding: 0.4rem 0.9rem;
+        background: $sche-yellow;
+        border: 1px solid #ffffff;
+        color: #ffffff;
+        font-size: calc(clamp(0.75rem, 1.1vw, 1.125rem) * var(--sche-slide-scale, 1));
+
+        &::before {
+            content: "› ";
+        }
+    }
+}
+
+// Die drei Teaser unter dem Slider (Block-Klasse "sche-home-teasers"): alle gleich hoch, das Bild füllt den Rest
+.sche-home-teasers .cms-element-text {
+    height: 100%;
+}
+
+.sche-home-teaser {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    height: 100%;
+    background: #ffffff;
+    border-top: 7px solid $sche-yellow;
+    color: $sche-grey;
+    text-decoration: none;
+
+    &__title,
+    &__claim {
+        display: block;
+        margin: 0 1.25rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        text-transform: uppercase;
+        @include sche-headline-font;
+    }
+
+    &__title {
+        margin-top: 1rem;
+        color: #000000;
+        font-size: clamp(1.125rem, 2vw, 1.5rem);
+        line-height: 1.25;
+    }
+
+    &__claim {
+        margin-bottom: 0.9375rem;
+        font-size: clamp(0.875rem, 1.5vw, 1.125rem);
+        line-height: 1.25rem;
+    }
+
+    &__image {
+        display: block;
+        flex-grow: 1;
+        width: 100%;
+        height: auto;
+        min-height: 14.8125rem;
+        object-fit: cover;
+    }
+
+    &__button {
+        position: absolute;
+        bottom: 1.25rem;
+        left: 1.25rem;
+        width: 9.375rem;
+        height: 2.5rem;
+        line-height: 2.125rem;
+        background: $sche-yellow;
+        border: 2px solid #ffffff;
+        color: #ffffff;
+        text-align: center;
+        text-transform: uppercase;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+        @include sche-headline-font;
+        font-size: 0.875rem;
+    }
+
+    &:hover {
+        color: $sche-grey;
+        text-decoration: none;
+
+        * {
+            transition: 0.25s ease;
+        }
+
+        .sche-home-teaser__title {
+            color: $sche-yellow;
+        }
+
+        .sche-home-teaser__button {
+            background: #ffffff;
+            border-color: $sche-yellow;
+            color: $sche-yellow;
+            text-shadow: 1px 0 0 #dbdbdb;
+        }
+    }
+}
+
+// Überschrift eines Abschnitts (Glatz-Block, Markenlogos): Headline-Schrift, grau, kurzer gelber Strich darunter
+@mixin sche-section-headline {
+    position: relative;
+    margin: 0 0 1.25rem;
+    padding-bottom: 0.5rem;
+    color: $sche-grey;
+    @include sche-headline-font;
+    font-size: 1.125rem;
+    text-transform: uppercase;
+
+    &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 3rem;
+        height: 3px;
+        background: $sche-yellow;
+    }
+}
+
+// Herstellerblock "Glatz Sonnenschirme & Ampelschirme": Logo + Überschrift, darunter Bildkarten mit der
+// Beschriftung auf dem Bild
+.sche-brand-block {
+    padding: 1.5rem 0 0.5rem;
+
+    &__header {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 1.25rem;
+    }
+
+    // the logo sits centered in its box
+    &__logo {
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 7.5rem;
+        height: 3.5rem;
+        padding: 0.5rem 0.75rem;
+        background: #ffffff;
+        border: 1px solid $sche-light-grey;
+        border-radius: 6px;
+        transition: border-color 0.2s ease;
+
+        &:hover {
+            border-color: $sche-yellow;
+        }
+    }
+
+    &__logo-image {
+        display: block;
+        width: auto;
+        max-width: 100%;
+        height: auto;
+        max-height: 100%;
+    }
+
+    &__title {
+        @include sche-section-headline;
+        margin-bottom: 0;
+    }
+
+    &__tiles {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+
+        @include media-breakpoint-up(md) {
+            grid-template-columns: repeat(4, 1fr);
+        }
+    }
+
+    &__tile {
+        display: block;
+        position: relative;
+        overflow: hidden;
+        border-radius: 6px;
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: none;
+
+            .sche-brand-block__tile-image {
+                transform: scale(1.05);
+            }
+
+            .sche-brand-block__tile-label::after {
+                width: 100%;
+            }
+        }
+    }
+
+    &__tile-image {
+        display: block;
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        object-fit: cover;
+        transition: transform 0.4s ease;
+    }
+
+    &__tile-label {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        padding: 2.5rem 0.875rem 0.75rem;
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.65));
+        color: #ffffff;
+        @include sche-headline-font;
+        font-size: clamp(0.875rem, 1.3vw, 1.0625rem);
+        text-transform: uppercase;
+        text-decoration: none;
+
+        // gelber Strich am unteren Rand, wird beim Überfahren breiter
+        &::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 3rem;
+            height: 3px;
+            background: $sche-yellow;
+            transition: width 0.3s ease;
+        }
+    }
+}
+
+// "Unsere Top Marken": helle Logo-Karten, Logos in Graustufen, beim Überfahren farbig
+.sche-brand-logos {
+    padding: 1.5rem 0 0.5rem;
+
+    &__headline {
+        @include sche-section-headline;
+    }
+
+    &__list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+
+        @include media-breakpoint-up(md) {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        @include media-breakpoint-up(lg) {
+            grid-template-columns: repeat(6, 1fr);
+        }
+    }
+
+    &__item {
+        display: block;
+        height: 5.5rem;
+        padding: 1.25rem 1rem;
+        background: #ffffff;
+        border: 1px solid $sche-light-grey;
+        border-radius: 6px;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+
+        &:hover {
+            border-color: $sche-yellow;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+            transform: translateY(-2px);
+
+            .sche-brand-logos__logo {
+                filter: none;
+                opacity: 1;
+            }
+        }
+    }
+
+    &__logo {
+        display: block;
+        height: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        filter: grayscale(100%);
+        opacity: 0.65;
+        transition: filter 0.2s ease, opacity 0.2s ease;
+
+        @each $brand in glatz, may, bahama, caravita, knirps, shademaker {
+            &--#{$brand} {
+                background-image: url("#{$app-css-relative-asset-path}/sche/logos/#{$brand}.svg");
+            }
+        }
+    }
+}

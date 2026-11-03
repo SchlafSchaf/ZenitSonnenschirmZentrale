@@ -1,0 +1,7 @@
+// Headline-Schrift wie sonnenschirm_headline in SW5 (Roboto Condensed Bold).
+// Text und Überschriften haben dieselbe Schriftfamilie - die Headline-Schrift unterscheidet sich nur durch das
+// Gewicht. Beides kommt aus der Theme-Konfiguration (Schriftart Überschriften, Schriftstärke Überschriften).
+@mixin sche-headline-font {
+    font-family: $headings-font-family;
+    font-weight: $headings-font-weight;
+}
