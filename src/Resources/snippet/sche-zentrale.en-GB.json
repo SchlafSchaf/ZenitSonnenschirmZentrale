@@ -15,6 +15,9 @@
             "address": "Sterzinger Str. 12, 86165 Augsburg",
             "copyright": "Copyright © 2016 - Sonnenschirm-Zentrale.de - All rights reserved",
             "includeVat": "* All prices incl. VAT plus <a href=\"%url%\">shipping costs</a>, if not stated otherwise."
+        },
+        "productBox": {
+            "cta": "View product"
         }
     }
 }

@@ -1,0 +1,47 @@
+// Produktkachel der Zentrale wie in SW5: Bild auf Weiß, gelber Balken "Produkt ansehen", darunter ein grauer Bereich
+// mit Name, Unterzeile und Preis. Schrift, Ausrichtung, Farben und Rahmen kommen aus der Theme-Konfiguration;
+// Balken und Unterzeile ergänzt views/storefront/component/product/card/box-standard.html.twig.
+
+.product-box.box-standard {
+    // the yellow bar and the grey info area reach the edges of the box
+    > .card-body {
+        padding: 0;
+    }
+
+    .product-image-wrapper {
+        padding: 1rem;
+    }
+
+    .product-info {
+        flex-grow: 1;
+        padding: 1.25rem 1.25rem 1rem;
+        background: #ededed;
+    }
+}
+
+.sche-product-box-cta {
+    display: block;
+    padding: 0.875rem 1rem;
+    background: lighten($sw-color-brand-primary, 15%);
+    color: #ffffff;
+    @include sche-headline-font;
+    font-size: 1rem;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+        background: $sw-color-brand-primary;
+        color: #ffffff;
+        text-decoration: none;
+    }
+}
+
+.sche-product-box-subtitle {
+    margin-top: 0.25rem;
+    color: #777777;
+    @include sche-headline-font;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+}
