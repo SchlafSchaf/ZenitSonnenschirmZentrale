@@ -1,5 +1,6 @@
-// Filterleiste über dem Listing linksbündig: die Filter-Buttons haben links keinen Innenabstand, damit jede Zeile
-// an der Kante von Überschrift und Kacheln beginnt (Abstand zum nächsten Filter bleibt rechts).
-.cms-section-default .cms-element-sidebar-filter .filter-panel-items-container .filter-panel-item-toggle {
-    padding-left: 0;
+// Filterleiste über dem Listing linksbündig: Gravity gibt den Filter-Buttons 20 px Innenabstand links und rechts
+// (".filter-panel:not(.is--sidebar) .filter-panel-item-toggle"). Die ganze Leiste rückt um diesen Abstand nach links,
+// damit jede Zeile an der Kante von Überschrift und Kacheln beginnt und die Hover-Fläche den Text mittig umgibt.
+.cms-section-default .cms-element-sidebar-filter .filter-panel:not(.is--sidebar) .filter-panel-items-container {
+    margin-left: -20px;
 }
