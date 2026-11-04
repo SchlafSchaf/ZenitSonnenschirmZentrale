@@ -162,38 +162,38 @@ $sche-footer-benefits: (
             }
         }
     }
+}
 
-    // Zahlungsarten als weiße Kacheln unter den Vorteilen
-    &__logos.footer-logos {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: flex-start;
-        gap: 0.3125rem;
-        margin-bottom: 1.5rem;
+// Versand- und Zahlungslogos unter den Vorteilen von "Zahlung & Versand"; die Logos bringen ihren Rahmen selbst mit
+.sche-footer-logos.footer-logos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 0.3125rem;
+    margin-top: 1rem;
+    padding: 0;
 
-        .footer-logo {
-            &,
-            &:first-child,
-            &:last-child {
-                display: flex;
-                align-items: center;
-                height: 2.5rem;
-                margin: 0;
-            }
+    .footer-logo {
+        &,
+        &:first-child,
+        &:last-child {
+            display: flex;
+            align-items: center;
+            height: 2.5rem;
+            margin: 0;
         }
+    }
 
-        // die Logos bringen ihren Rahmen selbst mit
-        .footer-logo-image {
-            width: auto;
-            max-width: none;
-            height: 100%;
-            max-height: none;
-        }
+    .footer-logo-image {
+        width: auto;
+        max-width: none;
+        height: 100%;
+        max-height: none;
     }
 }
 
 // Social-Media-Icons groß und grau wie in SW5
-.sche-footer-main .footer-social-column .icon {
+.sche-footer-main .social-icon .icon {
     width: 2rem;
     height: 2rem;
 }
@@ -223,18 +223,21 @@ $sche-footer-benefits: (
 }
 
 // Unterer Bereich: weißer Kasten mit kleineren Überschriften und Links mit Pfeil
+// (auf dem Handy wie die Spalten darüber, ohne Kasten)
 .sche-footer-box {
-    margin: 0.625rem 0 2.5rem;
-    padding: 1rem 0.5rem;
-    background: #ffffff;
-    border-radius: 0.9375rem;
+    @include media-breakpoint-up(md) {
+        margin: 0.625rem 0 2.5rem;
+        padding: 1rem 0.5rem;
+        background: #ffffff;
+        border-radius: 0.9375rem;
 
-    .footer-column {
-        --#{$zen-prefix}footer-column-bg: #ffffff;
-    }
+        .footer-column {
+            --#{$zen-prefix}footer-column-bg: #ffffff;
+        }
 
-    .footer-column-headline {
-        font-size: 0.875rem;
+        .footer-column-headline {
+            font-size: 0.875rem;
+        }
     }
 
     // Gravitys Unterstreichung beim Überfahren abschalten (::before ist hier der Pfeil)

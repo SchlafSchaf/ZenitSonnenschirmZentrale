@@ -6,7 +6,7 @@
 
 {# Layout as in SW5: a grey area with "Beratung / Verkauf" on the left and, right of a yellow line, the first two
    footer categories (Sonnenschirme, Ampelschirme), "Zahlung & Versand" (Gravity's custom column) with the payment
-   logos and "Social Media"; below a white box with the other footer categories (Downloads, Kundeninformation,
+   and shipping logos and "Social Media"; below a white box with the other footer categories (Downloads, Kundeninformation,
    Service & Kontakt). Gravity's own columns are reused, only their arrangement is set here - the column
    order of the theme configuration is not used. #}
 {% block layout_footer_navigation %}
@@ -23,10 +23,6 @@
                     {{ block('layout_footer_navigation_columns') }}
 
                     {{ block('zen_layout_footer_navigation_custom') }}
-
-                    <div class="col-12 sche-footer-main__logos footer-logos">
-                        {{ block('layout_footer_payment_logos') }}
-                    </div>
 
                     {{ block('zen_layout_footer_navigation_social') }}
                 </div>
@@ -52,6 +48,44 @@
     {% endif %}
 {% endblock %}
 
+{# "Zahlung & Versand": the payment and shipping logos below the benefits, inside the column so that they are
+   collapsed with it on phones #}
+{% block zen_layout_footer_navigation_custom_content %}
+    {% if hasContent %}
+        <div id="collapseFooterCustom"
+             class="footer-column-content{% if hasHeadline and collapsible %} collapse js-footer-column-content{% endif %}"
+             {% if hasHeadline %}aria-labelledby="collapseFooterCustomTitle"{% endif %}>
+            <div class="footer-column-content-inner">
+                {{ customColumn.translated.text|raw }}
+
+                {# each logo once - several shipping methods (DPD Standard / EU, ...) share one logo #}
+                {% set scheLogos = [] %}
+                {% set scheLogoMediaIds = [] %}
+                {% for method in footer.shippingMethods|merge(footer.paymentMethods) %}
+                    {% if method.media and method.media.id not in scheLogoMediaIds %}
+                        {% set scheLogos = scheLogos|merge([{ media: method.media, name: method.translated.name }]) %}
+                        {% set scheLogoMediaIds = scheLogoMediaIds|merge([method.media.id]) %}
+                    {% endif %}
+                {% endfor %}
+
+                {% if scheLogos is not empty %}
+                    <div class="sche-footer-logos footer-logos">
+                        {% for logo in scheLogos %}
+                            <div class="footer-logo">
+                                <img class="footer-logo-image"
+                                     src="{{ logo.media.url }}"
+                                     alt="{{ logo.media.translated.alt|default(logo.name) }}"
+                                     title="{{ logo.media.translated.title|default(logo.name) }}"
+                                     loading="lazy">
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
+
 {# "Beratung / Verkauf" instead of the shared service hotline headline #}
 {% block zen_layout_footer_navigation_hotline_headline %}
     <div class="{{ hotlineHiddenClass }} footer-column-headline footer-headline{% if collapsible %} js-footer-column-headline{% endif %}"
@@ -62,10 +96,10 @@
     </div>
 {% endblock %}
 
-{# Contact data of the Zentrale as in SW5: phone, e-mail, showroom #}
+{# Contact data of the Zentrale as in SW5: phone, e-mail, showroom; open on phones from the start ("show") #}
 {% block zen_layout_footer_navigation_hotline_content %}
     <div id="collapseFooterHotline"
-         class="footer-column-content{% if collapsible %} collapse js-footer-column-content{% endif %}"
+         class="footer-column-content{% if collapsible %} collapse show js-footer-column-content{% endif %}"
          aria-labelledby="collapseFooterHotlineTitle">
         <div class="footer-column-content-inner sche-footer-contact">
             <p class="sche-footer-contact__text">{{ 'sche.footer.hotlineIntro'|trans|sw_sanitize }}</p>

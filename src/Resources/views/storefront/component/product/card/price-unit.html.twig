@@ -1,8 +1,8 @@
 {% sw_extends '@Storefront/storefront/component/product/card/price-unit.html.twig' %}
 
-{# Price of the product box as in SW5: the list price struck through in red with the footnote mark of "unser
-   bisheriger Verkaufspreis" (general.high5, see sche.footer.includeVat) on its own line, below it the price with
-   "ab" and the star of the VAT footnote (general.star) #}
+{# Price of the product box as in SW5: the list price struck through in red with the footnote mark ¹ of "unser
+   bisheriger Verkaufspreis" (footnotes of the Zentrale: sche.footer.includeVat) on its own line, below it the price
+   with "ab" and the star of the VAT footnote (general.star) #}
 
 {% block component_product_box_from_price %}{% endblock %}
 
@@ -11,7 +11,7 @@
         <span class="sche-list-price">
             <span class="visually-hidden">{{ 'listing.regularPriceLabel'|trans|sw_sanitize }}</span>
             <s class="sche-list-price__price">{{ price.listPrice.price|currency }}</s>
-            <sup class="sche-list-price__hint">{{ 'general.high5'|trans|sw_sanitize }}</sup>
+            <sup class="sche-list-price__hint">{{ 'general.high1'|trans|sw_sanitize }}</sup>
         </span>
     {% endif %}
 
