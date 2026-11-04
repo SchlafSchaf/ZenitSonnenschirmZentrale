@@ -57,7 +57,7 @@
                        data-url="{{ path('frontend.sche.video-modal', { videoId: tile.videoId }) }}"
                        data-modal-class="modal-xl sche-video-modal-dialog"
                        title="{{ 'sche.listingTile.videoTitle'|trans({ '%name%': tile.manufacturer ~ ' ' ~ tile.model })|striptags }}">
-                        <span class="visually-hidden">{{ 'sche.listingTile.videoTitle'|trans({ '%name%': tile.manufacturer ~ ' ' ~ tile.model })|sw_sanitize }}</span>
+                        {{ 'sche.listingTile.video'|trans|sw_sanitize }}
                     </a>
                 {% endif %}
             </div>

@@ -27,7 +27,8 @@
         "listingTile": {
             "more": "View product",
             "videoTitle": "%name% video",
-            "othersHeadline": "More %category%"
+            "othersHeadline": "More %category%",
+            "video": "Video"
         }
     }
 }

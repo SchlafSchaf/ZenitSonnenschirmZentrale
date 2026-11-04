@@ -1,0 +1,10 @@
+// Seitenzahlen ohne Gravitys Ring beim Überfahren (box-shadow statt Rahmen, weil der Rahmen in der
+// Theme-Konfiguration aus ist). Farben kommen aus der Theme-Konfiguration (Pagination).
+.page-link {
+    &,
+    &:hover,
+    &.active:hover,
+    .active > &:hover {
+        box-shadow: none;
+    }
+}
