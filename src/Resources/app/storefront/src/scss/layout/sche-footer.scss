@@ -269,7 +269,29 @@ $sche-footer-benefits: (
     }
 }
 
-// Copyright mittig über den Fußnoten
-.footer-bottom .footer-copyright {
-    text-align: center;
+// Unterer Balken wie in SW5: Copyright mittig, darunter die Fußnoten linksbündig über die ganze Breite
+.footer-bottom {
+    .footer-bottom-left,
+    .footer-bottom-right {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    .footer-bottom-left {
+        order: 1;
+    }
+
+    .footer-bottom-right {
+        order: 2;
+    }
+
+    .footer-copyright {
+        margin-bottom: 1rem;
+        text-align: center;
+    }
+
+    .footer-vat,
+    .footer-vat p {
+        text-align: left;
+    }
 }
