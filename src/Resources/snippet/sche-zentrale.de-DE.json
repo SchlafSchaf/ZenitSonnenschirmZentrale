@@ -2,7 +2,8 @@
     "sche": {
         "cms": {
             "collapseClose": "Text einklappen",
-            "brandLogosHeadline": "Unsere Top Marken"
+            "brandLogosHeadline": "Unsere Top Marken",
+            "collapseOpen": "mehr erfahren"
         },
         "footer": {
             "hotlineHeadline": "Beratung / Verkauf",

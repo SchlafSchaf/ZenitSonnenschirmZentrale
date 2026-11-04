@@ -2,7 +2,8 @@
     "sche": {
         "cms": {
             "collapseClose": "Show less",
-            "brandLogosHeadline": "Our top brands"
+            "brandLogosHeadline": "Our top brands",
+            "collapseOpen": "learn more"
         },
         "footer": {
             "hotlineHeadline": "Advice / Sales",
