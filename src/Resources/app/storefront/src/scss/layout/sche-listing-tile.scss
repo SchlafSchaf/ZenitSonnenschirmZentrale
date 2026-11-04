@@ -1,39 +1,80 @@
-// Spezialkachel der Schirm-Kategorieseiten wie in SW5 (SozeCore "Produktkachel Kategorieseite"), ohne den grünen
-// Strich unter der Überschrift. Template: views/storefront/sche/listing-tile.html.twig, Daten aus ScheSw6Core
-// (ListingTileSubscriber). Die Kachel steht in derselben Spalte wie eine normale Produktkachel.
+// Spezialkachel der Schirm-Kategorieseiten (Nachfolger der SW5-"Produktkachel Kategorieseite") im Kartenstil der
+// Startseite: Bild mit Name, Hersteller und Video, Kurztext (höchstens drei Zeilen, damit alle Kacheln gleich hoch
+// sind), Eckdaten als zweispaltige Liste, unten Preis und Button. Template: views/storefront/sche/listing-tile.html.twig,
+// Daten aus ScheSw6Core (ListingTileSubscriber). Die Spezialkacheln stehen vor den normalen Kacheln, drei pro Zeile
+// (views/storefront/component/product/listing.html.twig).
+
+$sche-tile-grey: #41454c;
+$sche-tile-border: #e3e3e6;
 
 .sche-listing-tile {
     display: flex;
     flex-direction: column;
     height: 100%;
     overflow: hidden;
-    border: 1px solid #dbdbde;
-    box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, 0.1);
+    border: 1px solid $sche-tile-border;
+    border-radius: 6px;
+    background: #ffffff;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
 
-    &__header {
+    &:hover {
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+        transform: translateY(-2px);
+
+        .sche-listing-tile__image {
+            transform: scale(1.05);
+        }
+
+        .sche-listing-tile__title::after {
+            width: 100%;
+        }
+    }
+
+    &__media {
         position: relative;
-        max-height: 10.9375rem;
         overflow: hidden;
+    }
+
+    &__image-link {
+        display: block;
     }
 
     &__image {
         display: block;
         width: 100%;
-        height: auto;
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+        transition: transform 0.4s ease;
     }
 
-    &__manufacturer {
+    // Name auf dem Bild wie bei den Bildkarten der Startseite: Verlauf nach unten, gelber Strich wächst beim Überfahren
+    &__title {
         position: absolute;
-        top: 0.9375rem;
         right: 0;
-        min-width: 6.875rem;
-        padding: 0.3125rem 0.625rem 0.1875rem;
-        background-color: rgba(100, 100, 100, 0.6);
-        color: #dbdbde;
+        bottom: 0;
+        left: 0;
+        margin: 0;
+        padding: 2.5rem 1rem 0.75rem;
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7));
         @include sche-headline-font;
-        font-size: 1.125rem;
-        text-align: center;
+        font-size: 1.25rem;
+        line-height: 1.2;
         text-transform: uppercase;
+
+        &::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 3rem;
+            height: 3px;
+            background: $sche-yellow;
+            transition: width 0.3s ease;
+        }
+    }
+
+    &__title-link {
+        color: #ffffff;
         text-decoration: none;
 
         &:hover {
@@ -42,130 +83,171 @@
         }
     }
 
-    &__video {
+    &__model {
+        color: $sche-yellow;
+    }
+
+    &__manufacturer {
         position: absolute;
-        right: 0.625rem;
-        bottom: 0.625rem;
-        width: 3.125rem;
-        height: 3.125rem;
-        border: 2px solid #dbdbde;
-        background-color: rgba(100, 100, 100, 0.7);
-        background-image: url("#{$app-css-relative-asset-path}/sche/icons/video.svg");
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: 2.5rem;
-        transition: all 0.2s ease-out;
+        top: 0.75rem;
+        left: 0.75rem;
+        padding: 0.25rem 0.625rem;
+        border-radius: 3px;
+        background: rgba(255, 255, 255, 0.92);
+        color: $sche-tile-grey;
+        @include sche-headline-font;
+        font-size: 0.8125rem;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        text-decoration: none;
 
         &:hover {
-            border-color: transparent;
-            background-color: rgba(255, 255, 255, 0.9);
-            transform: scale(1.1);
+            color: $sche-yellow;
+            text-decoration: none;
         }
     }
 
-    &__intro {
-        min-height: 9.0625rem;
-        padding: 0.625rem;
-        background-color: #41454c;
-    }
+    &__video {
+        position: absolute;
+        top: 0.625rem;
+        right: 0.625rem;
+        width: 2.75rem;
+        height: 2.75rem;
+        border: 2px solid #ffffff;
+        border-radius: 50%;
+        background: $sche-yellow;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+        transition: transform 0.2s ease, background-color 0.2s ease;
 
-    &__title {
-        margin: 0;
-        color: #ffffff;
-        @include sche-headline-font;
-        font-size: 1.25rem;
-        text-transform: uppercase;
-
-        &::after {
+        &::before {
             content: "";
-            display: block;
-            width: 3rem;
-            height: 0.1875rem;
-            margin-top: 0.5rem;
-            background-color: $sw-color-brand-primary;
+            position: absolute;
+            inset: 0;
+            background-color: #ffffff;
+            mask: url("#{$app-css-relative-asset-path}/sche/icons/play.svg") 55% center / 1.25rem no-repeat;
+        }
+
+        &:hover {
+            background: $sche-tile-grey;
+            transform: scale(1.08);
         }
     }
 
-    &__model {
-        color: $sw-color-brand-primary;
+    &__body {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        padding: 1rem 1rem 0;
     }
 
+    // höchstens drei Zeilen, der ganze Text steht im title-Attribut
     &__text {
-        margin: 0;
-        padding-top: 0.625rem;
-        color: #ffffff;
-        font-size: 0.75rem;
-        line-height: 1.2rem;
+        display: -webkit-box;
+        min-height: calc(3 * 1.35em);
+        margin: 0 0 0.75rem;
+        overflow: hidden;
+        color: #666666;
+        font-size: 0.875rem;
+        line-height: 1.35;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
     }
 
     &__facts {
-        flex-grow: 1;
+        display: grid;
+        grid-template-columns: minmax(7.5rem, 40%) 1fr;
+        margin: 0 0 1rem;
+        font-size: 0.8125rem;
+        line-height: 1.3;
+    }
+
+    &__label,
+    &__value {
         margin: 0;
-        padding: 0 0.3125rem;
-        background-color: #ffffff;
+        padding: 0.4375rem 0;
+        border-top: 1px solid $sche-tile-border;
     }
 
     &__label {
-        padding-top: 0.3125rem;
-        color: #41454c;
+        padding-right: 0.75rem;
+        hyphens: auto;
+        color: $sche-tile-grey;
         @include sche-headline-font;
-        font-size: 0.75rem;
     }
 
     &__value {
-        margin: 0;
-        padding-bottom: 0.3125rem;
-        border-bottom: 1px solid #dbdbde;
         color: #666666;
-        font-size: 0.875rem;
-
-        &:last-child {
-            border-bottom: 0;
-        }
     }
 
-    &__separator {
-        padding: 0 0.375rem;
+    &__footer {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 0.75rem;
+        padding: 0.875rem 1rem;
+        border-top: 1px solid $sche-tile-border;
+        background: #f7f7f8;
+    }
+
+    &__price {
+        display: flex;
+        flex-direction: column;
     }
 
     &__list-price {
         color: #ff3600;
+        font-size: 0.8125rem;
 
         sup {
-            font-size: 0.75rem;
+            font-size: 0.6875rem;
         }
     }
 
-    &__more {
-        display: block;
-        padding: 0.9375rem 0.625rem;
-        border: 1px solid $sw-color-brand-primary;
-        background-color: $sw-color-brand-primary;
+    &__current-price {
+        color: $sche-tile-grey;
+        @include sche-headline-font;
+        font-size: 1.25rem;
+        line-height: 1.2;
+        white-space: nowrap;
+
+        small {
+            font-family: inherit;
+            font-size: 0.8125rem;
+            font-weight: normal;
+        }
+    }
+
+    &__button {
+        flex-shrink: 0;
+        padding: 0.5rem 1rem;
+        border: 2px solid $sche-yellow;
+        border-radius: 3px;
+        background: $sche-yellow;
         color: #ffffff;
+        @include sche-headline-font;
         font-size: 0.875rem;
         text-transform: uppercase;
         text-decoration: none;
-        transition: all 0.2s ease-in-out;
-
-        &::before {
-            content: "";
-            display: inline-block;
-            width: 0.5rem;
-            height: 0.5rem;
-            margin-right: 0.5rem;
-            background-color: currentColor;
-            mask: url("#{$app-css-relative-asset-path}/sche/icons/arrow-head-right.svg") center / contain no-repeat;
-        }
-
-        strong {
-            @include sche-headline-font;
-        }
+        transition: background-color 0.2s ease, color 0.2s ease;
 
         &:hover {
-            background-color: rgba(255, 255, 255, 0.9);
-            color: $sw-color-brand-primary;
+            background: #ffffff;
+            color: $sche-yellow;
             text-decoration: none;
         }
+    }
+}
+
+.sche-listing-tile-col {
+    margin-bottom: 1.5rem;
+}
+
+// Überschrift über den normalen Kacheln unter den Spezialkacheln, wie die Abschnittsüberschriften der Startseite
+.sche-listing-others {
+    margin: 1.5rem 0 1rem;
+
+    &__title {
+        @include sche-section-headline;
     }
 }
 

@@ -1,6 +1,6 @@
-{# Special tile of the Zentrale as in SW5 (SozeCore "Produktkachel Kategorieseite"): image with manufacturer and video,
-   name with short text, rows from the properties, price and the link to the product. The data comes from
-   ScheSw6Core's ListingTileSubscriber. #}
+{# Special tile of the Zentrale (SW5: SozeCore "Produktkachel Kategorieseite") in the card style of the home page:
+   image with name, manufacturer and video, short text, rows from the properties, price and the link to the
+   product. The data comes from ScheSw6Core's ListingTileSubscriber. #}
 
 {% block sche_listing_tile %}
     {% set productUrl = seoUrl('frontend.detail.page', { productId: product.id }) %}
@@ -11,25 +11,34 @@
     {% set displayFrom = product.parentId or product.childCount > 0 %}
 
     <div class="card product-box sche-listing-tile">
-        {% block sche_listing_tile_header %}
-            <div class="sche-listing-tile__header">
-                {% sw_thumbnails 'sche-listing-tile-image' with {
-                    media: tile.media,
-                    sizes: {
-                        xs: '500px',
-                        sm: '315px',
-                        md: '390px',
-                        lg: '350px',
-                        xl: '400px',
-                        xxl: '400px'
-                    },
-                    attributes: {
-                        class: 'sche-listing-tile__image',
-                        alt: tile.media.translated.alt|default(tile.manufacturer ~ ' ' ~ tile.model),
-                        title: tile.media.translated.title|default(tileTitle),
-                        loading: 'lazy'
-                    }
-                } %}
+        {% block sche_listing_tile_media %}
+            <div class="sche-listing-tile__media">
+                <a class="sche-listing-tile__image-link" href="{{ productUrl }}" title="{{ tileTitle }}" tabindex="-1">
+                    {% sw_thumbnails 'sche-listing-tile-image' with {
+                        media: tile.media,
+                        sizes: {
+                            xs: '500px',
+                            sm: '500px',
+                            md: '400px',
+                            lg: '440px',
+                            xl: '440px',
+                            xxl: '440px'
+                        },
+                        attributes: {
+                            class: 'sche-listing-tile__image',
+                            alt: tile.media.translated.alt|default(tile.manufacturer ~ ' ' ~ tile.model),
+                            title: tile.media.translated.title|default(tileTitle),
+                            loading: 'lazy'
+                        }
+                    } %}
+                </a>
+
+                <h3 class="sche-listing-tile__title">
+                    <a class="sche-listing-tile__title-link" href="{{ productUrl }}" title="{{ tileTitle }}">
+                        {{ tile.name }}
+                        <span class="sche-listing-tile__model">{{ tile.model }}</span>
+                    </a>
+                </h3>
 
                 {% if tile.manufacturerCategoryId %}
                     <a class="sche-listing-tile__manufacturer"
@@ -54,52 +63,41 @@
             </div>
         {% endblock %}
 
-        {% block sche_listing_tile_intro %}
-            <div class="sche-listing-tile__intro">
-                <h3 class="sche-listing-tile__title">
-                    {{ tile.name }} <span class="sche-listing-tile__model">{{ tile.model }}</span>
-                </h3>
-                <p class="sche-listing-tile__text">{{ tile.text }}</p>
+        {% block sche_listing_tile_body %}
+            <div class="sche-listing-tile__body">
+                <p class="sche-listing-tile__text" title="{{ tile.text }}">{{ tile.text }}</p>
+
+                <dl class="sche-listing-tile__facts">
+                    {% for row in tile.rows %}
+                        <dt class="sche-listing-tile__label">{{ row.label }}</dt>
+                        <dd class="sche-listing-tile__value">{{ row.values|join(' · ') }}</dd>
+                    {% endfor %}
+                </dl>
             </div>
         {% endblock %}
 
-        {% block sche_listing_tile_facts %}
-            <dl class="sche-listing-tile__facts">
-                {% for row in tile.rows %}
-                    <dt class="sche-listing-tile__label">{{ row.label }}</dt>
-                    <dd class="sche-listing-tile__value">
-                        {% for value in row.values %}
-                            {% if not loop.first %}<span class="sche-listing-tile__separator">|</span>{% endif %}
-                            <span>{{ value }}</span>
-                        {% endfor %}
-                    </dd>
-                {% endfor %}
-
-                {% block sche_listing_tile_price %}
-                    <dt class="sche-listing-tile__label">{{ 'sche.listingTile.price'|trans|sw_sanitize }}</dt>
-                    <dd class="sche-listing-tile__value sche-listing-tile__price">
-                        <span>
-                            {% if displayFrom %}{{ 'listing.listingTextFrom'|trans|lower|sw_sanitize }}{% endif %}
-                            {{ price.unitPrice|currency }}{{ 'general.star'|trans|sw_sanitize }}
+        {% block sche_listing_tile_footer %}
+            <div class="sche-listing-tile__footer">
+                <div class="sche-listing-tile__price">
+                    {% if price.listPrice.percentage > 0 %}
+                        <span class="sche-listing-tile__list-price">
+                            <span class="visually-hidden">{{ 'listing.regularPriceLabel'|trans|sw_sanitize }}</span>
+                            <s>{{ price.listPrice.price|currency }}</s><sup>{{ 'general.high1'|trans|sw_sanitize }}</sup>
                         </span>
+                    {% endif %}
 
-                        {% if price.listPrice.percentage > 0 %}
-                            <span class="sche-listing-tile__separator">|</span>
-                            <span class="sche-listing-tile__list-price">
-                                <span class="visually-hidden">{{ 'listing.regularPriceLabel'|trans|sw_sanitize }}</span>
-                                <s>{% if displayFrom %}{{ 'listing.listingTextFrom'|trans|lower|sw_sanitize }}{% endif %}
-                                    {{ price.listPrice.price|currency }}</s><sup>{{ 'general.high1'|trans|sw_sanitize }}</sup>
-                            </span>
+                    <span class="sche-listing-tile__current-price">
+                        {% if displayFrom %}
+                            <small>{{ 'listing.listingTextFrom'|trans|lower|sw_sanitize }}</small>
                         {% endif %}
-                    </dd>
-                {% endblock %}
-            </dl>
-        {% endblock %}
+                        {{ price.unitPrice|currency }}{{ 'general.star'|trans|sw_sanitize }}
+                    </span>
+                </div>
 
-        {% block sche_listing_tile_link %}
-            <a class="sche-listing-tile__more" href="{{ productUrl }}" title="{{ tileTitle }}">
-                {{ 'sche.listingTile.more'|trans({ '%model%': '<strong>' ~ tile.model|e ~ '</strong>' })|raw }}
-            </a>
+                <a class="sche-listing-tile__button" href="{{ productUrl }}" title="{{ tileTitle }}">
+                    {{ 'sche.listingTile.more'|trans|sw_sanitize }}
+                </a>
+            </div>
         {% endblock %}
     </div>
 {% endblock %}

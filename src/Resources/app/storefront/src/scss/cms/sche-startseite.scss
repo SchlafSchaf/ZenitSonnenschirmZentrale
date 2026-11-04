@@ -2,13 +2,6 @@
 // Nachbau der SW5-Einkaufswelt "Startseite": Slider-Texte, Teaser, Glatz-Block und Markenlogos sind
 // Text-Inhalte der Erlebniswelt, die nur diese Klassen verwenden.
 
-$sche-yellow: #ffba00;
-$sche-grey: #666666;
-$sche-light-grey: #ededed;
-$sche-border-grey: #dadae5;
-$sche-teal: #3fa1b5;
-$sche-content-max-width: 1260px;
-
 // Breite des Inhalts wie in SW5 (Layouts mit der CSS-Klasse "sche-sw5-layout")
 .sche-sw5-layout {
     .cms-section .boxed {
@@ -175,27 +168,6 @@ $sche-content-max-width: 1260px;
             color: $sche-yellow;
             text-shadow: 1px 0 0 #dbdbdb;
         }
-    }
-}
-
-// Überschrift eines Abschnitts (Glatz-Block, Markenlogos): Headline-Schrift, grau, kurzer gelber Strich darunter
-@mixin sche-section-headline {
-    position: relative;
-    margin: 0 0 1.25rem;
-    padding-bottom: 0.5rem;
-    color: $sche-grey;
-    @include sche-headline-font;
-    font-size: 1.125rem;
-    text-transform: uppercase;
-
-    &::after {
-        content: "";
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 3rem;
-        height: 3px;
-        background: $sche-yellow;
     }
 }
 

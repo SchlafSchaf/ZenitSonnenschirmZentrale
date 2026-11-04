@@ -25,9 +25,9 @@
             "sale": "Sale"
         },
         "listingTile": {
-            "price": "Preis",
-            "more": "Alle %model% in der Übersicht",
-            "videoTitle": "%name% Video"
+            "more": "Zum Produkt",
+            "videoTitle": "%name% Video",
+            "othersHeadline": "Weitere %category%"
         }
     }
 }
