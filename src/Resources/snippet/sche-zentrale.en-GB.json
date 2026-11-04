@@ -14,10 +14,15 @@
             "showroomIntro": "Or make an appointment for personal advice in our showroom in Augsburg",
             "address": "Sterzinger Str. 12, 86165 Augsburg",
             "copyright": "Copyright © 2016 - Sonnenschirm-Zentrale.de - All rights reserved",
-            "includeVat": "* All prices incl. VAT plus <a href=\"%url%\">shipping costs</a>, if not stated otherwise."
+            "includeVat": "* All prices incl. VAT plus <a href=\"%url%\">shipping costs</a>, if not stated otherwise.",
+            "showroomLabel": "Our showroom",
+            "showroomTitle": "Sonnenschirm-Zentrale showroom in Augsburg",
+            "showroomUrl": "/ueber-uns#soze-oeffnungszeiten",
+            "socialHeadline": "Social media"
         },
         "productBox": {
-            "cta": "View product"
+            "cta": "View product",
+            "sale": "Sale"
         }
     }
 }

@@ -4,6 +4,54 @@
    Sonnenschirm-Shop - the Zentrale uses its own snippets sche.footer.* for the hotline column, the copyright and
    the VAT notice. #}
 
+{# Layout as in SW5: a grey area with "Beratung / Verkauf" on the left and, right of a yellow line, the first two
+   footer categories (Sonnenschirme, Ampelschirme), "Zahlung & Versand" (Gravity's custom column) with the payment
+   logos and "Social Media"; below a white box with the other footer categories (Downloads, Kundeninformation,
+   Service & Kontakt). Gravity's own columns are reused, only their arrangement is set here - the column
+   order of the theme configuration is not used. #}
+{% block layout_footer_navigation %}
+    <div class="container">
+        <div id="footerColumns"
+             class="row footer-columns sche-footer-main"
+             data-collapse-footer-columns="true"
+             role="list">
+            {{ block('zen_layout_footer_navigation_hotline') }}
+
+            <div class="col-md-8 sche-footer-main__right">
+                <div class="row">
+                    {% set scheFooterNavigationColumns = [1, 2] %}
+                    {{ block('layout_footer_navigation_columns') }}
+
+                    {{ block('zen_layout_footer_navigation_custom') }}
+
+                    <div class="col-12 sche-footer-main__logos footer-logos">
+                        {{ block('layout_footer_payment_logos') }}
+                    </div>
+
+                    {{ block('zen_layout_footer_navigation_social') }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div id="footerColumnsBox"
+             class="row footer-columns sche-footer-box"
+             data-collapse-footer-columns="true"
+             role="list">
+            {% set scheFooterNavigationColumns = range(3, 20) %}
+            {{ block('layout_footer_navigation_columns') }}
+        </div>
+    </div>
+{% endblock %}
+
+{# Renders only the footer categories of the current area (see layout_footer_navigation) #}
+{% block layout_footer_navigation_column %}
+    {% if loop.index in scheFooterNavigationColumns %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}
+
 {# "Beratung / Verkauf" instead of the shared service hotline headline #}
 {% block zen_layout_footer_navigation_hotline_headline %}
     <div class="{{ hotlineHiddenClass }} footer-column-headline footer-headline{% if collapsible %} js-footer-column-headline{% endif %}"
@@ -25,14 +73,14 @@
 
             <a class="sche-footer-contact__item sche-footer-contact__item--phone"
                href="tel:{{ 'sche.footer.phoneLink'|trans|striptags }}">
-                <span class="sche-footer-contact__icon">{% sw_icon 'phone' style { size: 'sm' } %}</span>
-                {{ 'sche.footer.phone'|trans|sw_sanitize }}
+                <span class="sche-footer-contact__icon">{% sw_icon 'phone' style { size: 'sm', pack: 'sche', namespace: 'zenitSonnenschirmZentrale' } %}</span>
+                <span class="sche-footer-contact__value">{{ 'sche.footer.phone'|trans|sw_sanitize }}</span>
             </a>
 
             <a class="sche-footer-contact__item sche-footer-contact__item--mail"
                href="mailto:{{ 'sche.footer.email'|trans|striptags }}">
                 <span class="sche-footer-contact__icon">{% sw_icon 'envelope' style { size: 'sm' } %}</span>
-                {{ 'sche.footer.email'|trans|sw_sanitize }}
+                <span class="sche-footer-contact__value">{{ 'sche.footer.email'|trans|sw_sanitize }}</span>
             </a>
 
             <p class="sche-footer-contact__label">{{ 'sche.footer.showroomIntro'|trans|sw_sanitize }}</p>
@@ -41,7 +89,30 @@
                 <span class="sche-footer-contact__icon">{% sw_icon 'marker' style { size: 'sm' } %}</span>
                 {{ 'sche.footer.address'|trans|sw_sanitize }}
             </span>
+
+            {# Picture of the showroom; the medium keeps its SW5 path (protected by ScheSw6Core's Sw5MediaPathGuard) #}
+            <a class="sche-footer-showroom"
+               href="{{ 'sche.footer.showroomUrl'|trans|striptags }}"
+               title="{{ 'sche.footer.showroomTitle'|trans|striptags }}">
+                <span class="sche-footer-showroom__label">{{ 'sche.footer.showroomLabel'|trans|sw_sanitize }}</span>
+                <img class="sche-footer-showroom__image"
+                     src="{{ asset('media/image/eb/6a/a3/Ausstellung-3-800x800.jpg', 'public') }}"
+                     width="800"
+                     height="800"
+                     loading="lazy"
+                     alt="{{ 'sche.footer.showroomTitle'|trans|striptags }}">
+            </a>
         </div>
+    </div>
+{% endblock %}
+
+{# "Social Media" as in SW5 instead of the shared "Folge uns" #}
+{% block zen_layout_footer_navigation_social_headline %}
+    <div class="{{ socialHiddenClass }} footer-column-headline footer-headline{% if collapsible %} js-footer-column-headline{% endif %}"
+         id="collapseFooterSocialTitle">
+        <span>{{ 'sche.footer.socialHeadline'|trans|sw_sanitize }}</span>
+
+        {{ block('zen_layout_footer_navigation_social_icons') }}
     </div>
 {% endblock %}
 

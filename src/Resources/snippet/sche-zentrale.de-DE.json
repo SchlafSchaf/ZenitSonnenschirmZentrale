@@ -14,10 +14,15 @@
             "showroomIntro": "Oder vereinbaren Sie einen persönlichen Beratungstermin in unserer Ausstellung in Augsburg",
             "address": "Sterzinger Str. 12, 86165 Augsburg",
             "copyright": "Copyright © 2016 - Sonnenschirm-Zentrale.de - Alle Rechte vorbehalten",
-            "includeVat": "* Alle Preise inkl. gesetzl. Mehrwertsteuer zzgl. <a data-url=\"%url%\" href=\"%url%\" data-modal-class=\"modal-xl\" data-ajax-modal=\"true\">Versandkosten</a> ins Ausland, wenn nicht anders beschrieben<br>¹ Versandkostenfrei versenden wir innerhalb der Länder DE und AT. Der Versand auf deutsche und ausländische Inseln ist ausgeschlossen. Der Versand ins Ausland wird mit <span style=\"white-space: nowrap\">29 € bzw. 99 €</span> berechnet. Nähere Informationen erhalten Sie auf unserer <a data-url=\"%url%\" href=\"%url%\" data-modal-class=\"modal-xl\" data-ajax-modal=\"true\">Versandkostenseite</a><br>² Die Lieferzeit gilt für Deutschland und Österreich. Die Lieferung in andere Länder verlängert sich um jeweils 2 Werktage. Nähere Informationen erhalten Sie auf unserer <a data-url=\"%url%\" href=\"%url%\" data-modal-class=\"modal-xl\" data-ajax-modal=\"true\">Versandkostenseite</a><br>³ Für die Zahlungsart Vorkasse wird ein Skonto von 5% gewährt.<br>⁴ Produktionsartikel sind Waren die nicht vorgefertigt sind und für deren Herstellung eine individuelle Auswahl oder Bestimmung durch den Verbraucher maßgeblich ist und eindeutig auf die persönlichen Bedürfnisse des Verbrauchers zugeschnitten sind. Daher kann das Widerrufsrecht bei diesen Artikeln je nach Kundenspezifikation nicht angewendet werden.<br>⁵ Unser bisheriger Verkaufspreis inklusive gesetzl. Mehrwertsteuer"
+            "includeVat": "* Alle Preise inkl. gesetzl. Mehrwertsteuer zzgl. <a data-url=\"%url%\" href=\"%url%\" data-modal-class=\"modal-xl\" data-ajax-modal=\"true\">Versandkosten</a> ins Ausland, wenn nicht anders beschrieben<br>¹ Versandkostenfrei versenden wir innerhalb der Länder DE und AT. Der Versand auf deutsche und ausländische Inseln ist ausgeschlossen. Der Versand ins Ausland wird mit <span style=\"white-space: nowrap\">29 € bzw. 99 €</span> berechnet. Nähere Informationen erhalten Sie auf unserer <a data-url=\"%url%\" href=\"%url%\" data-modal-class=\"modal-xl\" data-ajax-modal=\"true\">Versandkostenseite</a><br>² Die Lieferzeit gilt für Deutschland und Österreich. Die Lieferung in andere Länder verlängert sich um jeweils 2 Werktage. Nähere Informationen erhalten Sie auf unserer <a data-url=\"%url%\" href=\"%url%\" data-modal-class=\"modal-xl\" data-ajax-modal=\"true\">Versandkostenseite</a><br>³ Für die Zahlungsart Vorkasse wird ein Skonto von 5% gewährt.<br>⁴ Produktionsartikel sind Waren die nicht vorgefertigt sind und für deren Herstellung eine individuelle Auswahl oder Bestimmung durch den Verbraucher maßgeblich ist und eindeutig auf die persönlichen Bedürfnisse des Verbrauchers zugeschnitten sind. Daher kann das Widerrufsrecht bei diesen Artikeln je nach Kundenspezifikation nicht angewendet werden.<br>⁵ Unser bisheriger Verkaufspreis inklusive gesetzl. Mehrwertsteuer",
+            "showroomLabel": "Unsere Ausstellung",
+            "showroomTitle": "Sonnenschirm-Zentrale Ausstellung in Augsburg",
+            "showroomUrl": "/ueber-uns#soze-oeffnungszeiten",
+            "socialHeadline": "Social Media"
         },
         "productBox": {
-            "cta": "Produkt ansehen"
+            "cta": "Produkt ansehen",
+            "sale": "Sale"
         }
     }
 }

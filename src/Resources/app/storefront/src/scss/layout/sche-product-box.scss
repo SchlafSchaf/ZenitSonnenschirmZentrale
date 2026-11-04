@@ -1,6 +1,8 @@
 // Produktkachel der Zentrale wie in SW5: Bild auf Weiß, gelber Balken "Produkt ansehen", darunter ein grauer Bereich
 // mit Name, Unterzeile und Preis. Schrift, Ausrichtung, Farben und Rahmen kommen aus der Theme-Konfiguration;
-// Balken und Unterzeile ergänzt views/storefront/component/product/card/box-standard.html.twig.
+// Balken und Unterzeile ergänzt views/storefront/component/product/card/box-standard.html.twig, den "Sale"-Stempel
+// views/storefront/component/product/card/badges.html.twig. Den Abstand zwischen den Kacheln setzt die
+// Theme-Konfiguration (Kachel-Abstand).
 
 .product-box.box-standard {
     // the yellow bar and the grey info area reach the edges of the box
@@ -43,5 +45,22 @@
     color: #777777;
     @include sche-headline-font;
     font-size: 0.875rem;
+    text-transform: uppercase;
+}
+
+// Rabatt-Stempel wie in SW5: roter Kreis mit "Sale" statt Gravitys Prozent-Badge
+.product-badges .sche-badge-sale {
+    align-items: center;
+    justify-content: center;
+    width: 3.125rem;
+    height: 3.125rem;
+    margin-left: 0;
+    padding: 0;
+    border-radius: 50%;
+    background-color: #ff3600;
+    color: #ffffff;
+    @include sche-headline-font;
+    font-size: 0.8125rem;
+    line-height: 1;
     text-transform: uppercase;
 }

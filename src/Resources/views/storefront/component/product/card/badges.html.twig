@@ -1,0 +1,15 @@
+{% sw_extends '@Storefront/storefront/component/product/card/badges.html.twig' %}
+
+{# Discount badge as in SW5: a round red "Sale" stamp instead of Gravity's percentage, shown whenever the box shows
+   a list price (same price as in component/product/card/price-unit.html.twig) - also for "from" prices #}
+{% block component_product_badges_discount %}
+    {% set price = product.calculatedPrices.count > 0 ? product.calculatedPrices.last : product.calculatedPrice %}
+
+    {% if product.variantListingConfig.displayParent and product.parentId == null %}
+        {% set price = product.calculatedCheapestPrice %}
+    {% endif %}
+
+    {% if price.listPrice.percentage > 0 %}
+        <span class="badge badge-discount sche-badge-sale">{{ 'sche.productBox.sale'|trans|sw_sanitize }}</span>
+    {% endif %}
+{% endblock %}

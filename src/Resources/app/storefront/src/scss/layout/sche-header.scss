@@ -11,11 +11,17 @@
     border-radius: 0 2rem 2rem 0;
 }
 
-// Konto, Merkzettel und Warenkorb als runde Icons ohne Rahmen (der Rahmen ließ beim Überfahren einen weißen Spalt
-// zwischen Rahmen und Hintergrund sehen)
+// Konto, Merkzettel und Warenkorb als runde Icons ohne Rahmen und ohne Gravitys Ring beim Überfahren (Rahmen und
+// Ring ließen am Rand des Kreises einen hellen Spalt sehen)
 .header-main .header-actions-col .btn {
     border: 0;
     border-radius: 50%;
+
+    &,
+    &:hover,
+    &:active {
+        box-shadow: none;
+    }
 }
 
 // Hauptnavigation: senkrechte Trennlinien zwischen den Punkten wie in SW5 (Trenner in der Konfiguration: keiner)
