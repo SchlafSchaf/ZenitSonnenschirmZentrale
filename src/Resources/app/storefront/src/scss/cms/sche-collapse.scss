@@ -1,4 +1,4 @@
-// Text, der nur auf dem Handy eingeklappt ist.
+// Text, der nur auf dem Handy eingeklappt ist (Startseite; Kategorietext automatisch ab dem zweiten Absatz).
 // Block-Klasse "sche-collapse-mobile-only" an einem Text-Element mit eingeklapptem Zusatzinhalt
 // (Einstellung "Inhalt" + Button von RHWeb CMS Elements): ab Tablet-Breite ist der Zusatzinhalt immer
 // sichtbar und der Button ausgeblendet, auf dem Handy klappt der Button ihn auf.
@@ -29,6 +29,16 @@
 
         // RHWeb shows the button with ".cms-element-text .rhweb-element-collapse > button[...]"
         .cms-element-text .rhweb-element-collapse > .rhweb-button {
+            display: none;
+        }
+
+        // Kategorietext (views/storefront/element/cms-element-text.html.twig)
+        .sche-category-text__more.collapse {
+            display: block;
+            height: auto;
+        }
+
+        .sche-category-text__toggle {
             display: none;
         }
     }

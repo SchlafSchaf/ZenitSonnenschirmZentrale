@@ -1,0 +1,279 @@
+// Spezialkachel der Schirm-Kategorieseiten (Nachfolger der SW5-"Produktkachel Kategorieseite") im Kartenstil der
+// Startseite: Bild mit Name, Hersteller und Video, Kurztext (höchstens drei Zeilen, damit alle Kacheln gleich hoch
+// sind), Eckdaten als zweispaltige Liste, unten Preis und Button. Template: views/storefront/sche/listing-tile.html.twig,
+// Daten aus ScheSw6Core (ListingTileSubscriber). Die Spezialkacheln stehen vor den normalen Kacheln, drei pro Zeile
+// (views/storefront/component/product/listing.html.twig).
+
+$sche-tile-grey: #41454c;
+$sche-tile-border: #e3e3e6;
+
+.sche-listing-tile {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+    border: 1px solid $sche-tile-border;
+    border-radius: 6px;
+    background: #ffffff;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+
+    &:hover {
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+        transform: translateY(-2px);
+
+        .sche-listing-tile__image {
+            transform: scale(1.05);
+        }
+
+        .sche-listing-tile__title::after {
+            width: 100%;
+        }
+    }
+
+    &__media {
+        position: relative;
+        overflow: hidden;
+    }
+
+    &__image-link {
+        display: block;
+    }
+
+    &__image {
+        display: block;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+        transition: transform 0.4s ease;
+    }
+
+    // Name auf dem Bild wie bei den Bildkarten der Startseite: Verlauf nach unten, gelber Strich wächst beim Überfahren
+    &__title {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        margin: 0;
+        padding: 2.5rem 1rem 0.75rem;
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7));
+        @include sche-headline-font;
+        font-size: 1.25rem;
+        line-height: 1.2;
+        text-transform: uppercase;
+
+        &::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 3rem;
+            height: 3px;
+            background: $sche-yellow;
+            transition: width 0.3s ease;
+        }
+    }
+
+    &__title-link {
+        color: #ffffff;
+        text-decoration: none;
+
+        &:hover {
+            color: #ffffff;
+            text-decoration: none;
+        }
+    }
+
+    &__model {
+        color: $sche-yellow;
+    }
+
+    &__manufacturer {
+        position: absolute;
+        top: 0.75rem;
+        left: 0.75rem;
+        padding: 0.25rem 0.625rem;
+        border-radius: 3px;
+        background: rgba(255, 255, 255, 0.92);
+        color: $sche-tile-grey;
+        @include sche-headline-font;
+        font-size: 0.8125rem;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        text-decoration: none;
+
+        &:hover {
+            color: $sche-yellow;
+            text-decoration: none;
+        }
+    }
+
+    // Video als Glas-Etikett oben rechts, Gegenstück zum Hersteller-Etikett oben links
+    &__video {
+        display: flex;
+        position: absolute;
+        top: 0.75rem;
+        right: 0.75rem;
+        align-items: center;
+        gap: 0.375rem;
+        padding: 0.25rem 0.625rem 0.25rem 0.5rem;
+        border-radius: 3px;
+        background: rgba(0, 0, 0, 0.45);
+        backdrop-filter: blur(4px);
+        color: #ffffff;
+        @include sche-headline-font;
+        font-size: 0.8125rem;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        text-decoration: none;
+        transition: background-color 0.2s ease;
+
+        &::before {
+            content: "";
+            width: 1.125rem;
+            height: 1.125rem;
+            border-radius: 50%;
+            background-color: $sche-yellow;
+            mask: url("#{$app-css-relative-asset-path}/sche/icons/play-circle.svg") center / contain no-repeat;
+        }
+
+        &:hover {
+            background: rgba(0, 0, 0, 0.7);
+            color: #ffffff;
+            text-decoration: none;
+        }
+    }
+
+    &__body {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        padding: 1rem 1rem 0;
+    }
+
+    // höchstens drei Zeilen, der ganze Text steht im title-Attribut
+    &__text {
+        display: -webkit-box;
+        min-height: calc(3 * 1.35em);
+        margin: 0 0 0.75rem;
+        overflow: hidden;
+        color: #666666;
+        font-size: 0.875rem;
+        line-height: 1.35;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+    }
+
+    &__facts {
+        display: grid;
+        grid-template-columns: minmax(7.5rem, 40%) 1fr;
+        margin: 0 0 1rem;
+        font-size: 0.8125rem;
+        line-height: 1.3;
+    }
+
+    &__label,
+    &__value {
+        margin: 0;
+        padding: 0.4375rem 0;
+        border-top: 1px solid $sche-tile-border;
+    }
+
+    &__label {
+        padding-right: 0.75rem;
+        hyphens: auto;
+        color: $sche-tile-grey;
+        @include sche-headline-font;
+    }
+
+    &__value {
+        color: #666666;
+    }
+
+    &__footer {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 0.75rem;
+        padding: 0.875rem 1rem;
+        border-top: 1px solid $sche-tile-border;
+        background: #f7f7f8;
+    }
+
+    &__price {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__list-price {
+        color: #ff3600;
+        font-size: 0.8125rem;
+
+        sup {
+            font-size: 0.6875rem;
+        }
+    }
+
+    &__current-price {
+        color: $sche-tile-grey;
+        @include sche-headline-font;
+        font-size: 1.25rem;
+        line-height: 1.2;
+        white-space: nowrap;
+
+        small {
+            font-family: inherit;
+            font-size: 0.8125rem;
+            font-weight: normal;
+        }
+    }
+
+    &__button {
+        flex-shrink: 0;
+        padding: 0.5rem 1rem;
+        border: 2px solid $sche-yellow;
+        border-radius: 3px;
+        background: $sche-yellow;
+        color: #ffffff;
+        @include sche-headline-font;
+        font-size: 0.875rem;
+        text-transform: uppercase;
+        text-decoration: none;
+        transition: background-color 0.2s ease, color 0.2s ease;
+
+        &:hover {
+            background: #ffffff;
+            color: $sche-yellow;
+            text-decoration: none;
+        }
+    }
+}
+
+.sche-listing-tile-col {
+    margin-bottom: 1.5rem;
+}
+
+// Überschrift über den normalen Kacheln unter den Spezialkacheln, wie die Abschnittsüberschriften der Startseite
+.sche-listing-others {
+    margin: 1.5rem 0 1rem;
+
+    &__title {
+        @include sche-section-headline;
+    }
+}
+
+// Etiketten und Name ohne Unterstreichung (Gravitys Link-Stil im Listing ist spezifischer)
+.sche-listing-tile a.sche-listing-tile__video,
+.sche-listing-tile a.sche-listing-tile__manufacturer,
+.sche-listing-tile a.sche-listing-tile__title-link,
+.sche-listing-tile a.sche-listing-tile__button {
+    &,
+    &:hover,
+    &:focus {
+        text-decoration: none;
+    }
+}
+
+// Video-Overlay (Shopwares AjaxModal mit dem Inhalt von ScheSw6Core frontend.sche.video-modal)
+.sche-video-modal-dialog .modal-body {
+    padding: 0;
+}

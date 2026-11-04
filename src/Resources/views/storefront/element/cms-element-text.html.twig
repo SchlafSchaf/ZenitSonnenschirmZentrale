@@ -12,7 +12,50 @@
         {% set content = content|replace({'<p>[sche-marken]</p>': brandLogos, '[sche-marken]': brandLogos}) %}
     {% endif %}
 
-    {{ content|raw }}
+    {# Category text (mapped category.description, layout "Sonnenschirm-Zentrale | Kategorie"): on phones only the
+       first paragraph with text shows, the rest opens with "mehr erfahren" - like the texts of the home page #}
+    {% set scheFirst = '' %}
+    {% set scheRest = '' %}
+    {% if element.config.content.value == 'category.description' %}
+        {% set scheChunks = content|split('</p>') %}
+        {% set scheCount = 0 %}
+        {% for chunk in scheChunks %}
+            {% if scheCount == 0 %}
+                {% set scheFirst = scheFirst ~ chunk ~ '</p>' %}
+                {% if ((chunk|split('<p')|last)|split('>', 2)|last)|striptags matches '/[[:alnum:]]/u' %}
+                    {% set scheCount = loop.index %}
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+        {% set scheRest = scheCount > 0 ? scheChunks|slice(scheCount)|join('</p>') : '' %}
+    {% endif %}
+
+    {% if scheRest|striptags matches '/[[:alnum:]]/u' %}
+        {% set scheCollapseId = 'sche-collapse-' ~ element.id %}
+
+        <div class="sche-collapse-mobile-only sche-category-text">
+            {{ scheFirst|raw }}
+
+            <div class="collapse sche-category-text__more" id="{{ scheCollapseId }}">
+                {{ scheRest|raw }}
+            </div>
+
+            <button class="btn btn-link btn-md sche-collapse-toggle sche-category-text__toggle"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#{{ scheCollapseId }}"
+                    aria-expanded="false"
+                    aria-controls="{{ scheCollapseId }}">
+                <span class="sche-collapse-toggle__open">{{ 'sche.cms.collapseOpen'|trans|sw_sanitize }}</span>
+                <span class="sche-collapse-toggle__close">{{ 'sche.cms.collapseClose'|trans|sw_sanitize }}</span>
+                <span class="icon icon-default">
+                    {{ source('@Storefront/assets/icon/default/arrow-head-down.svg', ignore_missing = true)|sw_icon_cache|raw }}
+                </span>
+            </button>
+        </div>
+    {% else %}
+        {{ content|raw }}
+    {% endif %}
 {% endblock %}
 
 {# Button of the collapsed text content (RHWeb CMS Elements): shows the configured button text while

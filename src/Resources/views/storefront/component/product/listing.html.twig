@@ -1,0 +1,40 @@
+{% sw_extends '@Storefront/storefront/component/product/listing.html.twig' %}
+
+{# Umbrella categories of the Zentrale: special tiles (extension scheListingTile, ScheSw6Core) first, three per row,
+   then the remaining products as normal product boxes under their own headline - per page of the listing #}
+
+{% block element_product_listing_col %}
+    {% set scheTileProducts = [] %}
+    {% set scheOtherProducts = [] %}
+    {% for product in searchResult.entities %}
+        {% if product.extensions.scheListingTile is defined %}
+            {% set scheTileProducts = scheTileProducts|merge([product]) %}
+        {% else %}
+            {% set scheOtherProducts = scheOtherProducts|merge([product]) %}
+        {% endif %}
+    {% endfor %}
+
+    {% if scheTileProducts|length > 0 %}
+        {% for product in scheTileProducts %}
+            <div class="cms-listing-col col-12 col-md-6 col-lg-4 sche-listing-tile-col" role="listitem">
+                {{ sw_block('element_product_listing_box') }}
+            </div>
+        {% endfor %}
+
+        {% if scheOtherProducts|length > 0 %}
+            <div class="col-12 sche-listing-others" role="listitem">
+                <h2 class="sche-listing-others__title">
+                    {{ 'sche.listingTile.othersHeadline'|trans({ '%category%': (scheTileProducts|first).extensions.scheListingTile.categoryName })|sw_sanitize }}
+                </h2>
+            </div>
+
+            {% for product in scheOtherProducts %}
+                <div class="cms-listing-col {{ listingColumns }} {{ scrollAnimationClasses }}" role="listitem">
+                    {{ sw_block('element_product_listing_box') }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% else %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}

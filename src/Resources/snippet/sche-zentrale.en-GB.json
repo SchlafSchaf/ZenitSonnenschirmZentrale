@@ -2,7 +2,8 @@
     "sche": {
         "cms": {
             "collapseClose": "Show less",
-            "brandLogosHeadline": "Our top brands"
+            "brandLogosHeadline": "Our top brands",
+            "collapseOpen": "learn more"
         },
         "footer": {
             "hotlineHeadline": "Advice / Sales",
@@ -23,6 +24,12 @@
         "productBox": {
             "cta": "View product",
             "sale": "Sale"
+        },
+        "listingTile": {
+            "more": "View product",
+            "videoTitle": "%name% video",
+            "othersHeadline": "More %category%",
+            "video": "Video"
         }
     }
 }
