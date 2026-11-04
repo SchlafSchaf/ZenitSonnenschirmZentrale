@@ -74,13 +74,13 @@
             <a class="sche-footer-contact__item sche-footer-contact__item--phone"
                href="tel:{{ 'sche.footer.phoneLink'|trans|striptags }}">
                 <span class="sche-footer-contact__icon">{% sw_icon 'phone' style { size: 'sm', pack: 'sche', namespace: 'zenitSonnenschirmZentrale' } %}</span>
-                <span class="sche-footer-contact__value">{{ 'sche.footer.phone'|trans|sw_sanitize }}</span>
+                {{ 'sche.footer.phone'|trans|sw_sanitize }}
             </a>
 
             <a class="sche-footer-contact__item sche-footer-contact__item--mail"
                href="mailto:{{ 'sche.footer.email'|trans|striptags }}">
                 <span class="sche-footer-contact__icon">{% sw_icon 'envelope' style { size: 'sm' } %}</span>
-                <span class="sche-footer-contact__value">{{ 'sche.footer.email'|trans|sw_sanitize }}</span>
+                {{ 'sche.footer.email'|trans|sw_sanitize }}
             </a>
 
             <p class="sche-footer-contact__label">{{ 'sche.footer.showroomIntro'|trans|sw_sanitize }}</p>

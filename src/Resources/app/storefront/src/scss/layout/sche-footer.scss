@@ -30,15 +30,6 @@ $sche-footer-benefits: (
         @include sche-headline-font;
     }
 
-    // nur Telefonnummer und E-Mail-Adresse unterstrichen, nicht das Icon
-    a.sche-footer-contact__item {
-        text-decoration: none;
-
-        .sche-footer-contact__value {
-            text-decoration: underline;
-        }
-    }
-
     &__item--phone {
         font-size: 1.5rem;
     }
@@ -145,13 +136,30 @@ $sche-footer-benefits: (
         }
     }
 
-    // Linklisten mit weißen Trennlinien
+    // Gravitys Unterstreichungen der Links (dauerhaft ::before, beim Überfahren ::after) abschalten
+    .footer-column .footer-column-content a:not(.btn) {
+        &::before,
+        &::after {
+            content: none;
+        }
+    }
+
+    // Linklisten mit weißen Trennlinien, beim Überfahren gelb und fett
     .footer-navigation-column .footer-link-item {
         border-bottom: 2px solid #ffffff;
+        transition: border-color 0.2s ease;
 
         .footer-link {
             display: block;
             padding: 0.25rem 1.25rem;
+        }
+
+        &:hover {
+            border-bottom-color: $sw-color-brand-primary;
+
+            .footer-link {
+                @include sche-headline-font;
+            }
         }
     }
 
@@ -169,20 +177,17 @@ $sche-footer-benefits: (
             &:last-child {
                 display: flex;
                 align-items: center;
-                justify-content: center;
-                min-width: 4.375rem;
                 height: 2.5rem;
                 margin: 0;
-                padding: 0.25rem;
-                background: #ffffff;
-                border-radius: 3px;
             }
         }
 
+        // die Logos bringen ihren Rahmen selbst mit
         .footer-logo-image {
             width: auto;
             max-width: none;
-            max-height: 100%;
+            height: 100%;
+            max-height: none;
         }
     }
 }
@@ -230,6 +235,11 @@ $sche-footer-benefits: (
 
     .footer-column-headline {
         font-size: 0.875rem;
+    }
+
+    // Gravitys Unterstreichung beim Überfahren abschalten (::before ist hier der Pfeil)
+    .footer-column .footer-column-content a:not(.btn)::after {
+        content: none;
     }
 
     .footer-link-item {

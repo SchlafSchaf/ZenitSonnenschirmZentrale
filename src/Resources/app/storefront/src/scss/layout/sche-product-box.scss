@@ -1,8 +1,8 @@
 // Produktkachel der Zentrale wie in SW5: Bild auf Weiß, gelber Balken "Produkt ansehen", darunter ein grauer Bereich
 // mit Name, Unterzeile und Preis. Schrift, Ausrichtung, Farben und Rahmen kommen aus der Theme-Konfiguration;
 // Balken und Unterzeile ergänzt views/storefront/component/product/card/box-standard.html.twig, den "Sale"-Stempel
-// views/storefront/component/product/card/badges.html.twig. Den Abstand zwischen den Kacheln setzt die
-// Theme-Konfiguration (Kachel-Abstand).
+// badges.html.twig, den Preis price-unit.html.twig (beide im selben Ordner). Den Abstand zwischen den Kacheln setzt
+// die Theme-Konfiguration (Kachel-Abstand).
 
 .product-box.box-standard {
     // the yellow bar and the grey info area reach the edges of the box
@@ -63,4 +63,27 @@
     font-size: 0.8125rem;
     line-height: 1;
     text-transform: uppercase;
+}
+
+// Preis wie in SW5 (views/storefront/component/product/card/price-unit.html.twig): Streichpreis rot in eigener
+// Zeile, darunter der Preis mit "ab" und Stern. Farbe, Größe und Stärke des Preises kommen aus der Theme-Konfiguration.
+.product-box .sche-list-price {
+    display: block;
+    color: #ff3600;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+
+    &__price {
+        text-decoration: line-through;
+    }
+
+    &__hint {
+        font-size: 0.75rem;
+    }
+}
+
+.product-box .sche-from-price {
+    font-size: 0.75rem;
+    font-weight: normal;
+    text-transform: none;
 }
