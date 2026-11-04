@@ -273,7 +273,20 @@ $sche-tile-border: #e3e3e6;
     }
 }
 
-// Video-Overlay (Shopwares AjaxModal mit dem Inhalt von ScheSw6Core frontend.sche.video-modal)
-.sche-video-modal-dialog .modal-body {
-    padding: 0;
+// Video-Overlay (Shopwares AjaxModal mit dem Inhalt von ScheSw6Core frontend.sche.video-modal). AjaxModal setzt nur
+// eine Klasse (data-modal-class), die Breite kommt deshalb von hier; der Modal-Inhalt ist ein Flex-Container, das
+// Video braucht seine volle Breite.
+.sche-video-modal-dialog {
+    .modal-dialog {
+        max-width: min(1140px, calc(100vw - 2rem), calc((100vh - 8rem) * 16 / 9));
+    }
+
+    .modal-body {
+        padding: 0;
+    }
+
+    // not "sche-video-modal": Gravity's custom CSS already uses that class for the video of the product page
+    .sche-video-player {
+        width: 100%;
+    }
 }
