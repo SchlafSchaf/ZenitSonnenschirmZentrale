@@ -1,5 +1,6 @@
 // Klassen für den Text einer Slider-Folie (Gravity "Bild-Slider"), je Bildschirmgröße.
-// Im Admin pro Folie unter "Eigene CSS-Klassen" eintragen, mehrere mit Leerzeichen getrennt, z. B.
+// Im Admin pro Folie unter "Eigene CSS-Klassen" eintragen (gilt für diese Folie) oder am ganzen Element unter
+// "Benutzerdefinierte Klassen > CSS-Klassen" (gilt für alle Folien), mehrere mit Leerzeichen getrennt, z. B.
 // "sche-slide-m-bottom sche-slide-m-center sche-slide-m-small".
 //
 //   Bildschirm:  m = Handy (bis 767 px), t = Tablet (768-991 px), d = Desktop (ab 992 px)
@@ -12,7 +13,11 @@
 // Gravity schreibt die Folien-Einstellungen als <style> in die Seite; die Selektoren hier sind deshalb
 // spezifischer (.cms-element-zen-image-slider ...), damit sie gewinnen.
 
-$sche-slide-item: ".cms-element-zen-image-slider .image-slider-item-container";
+// class on the slide or on the whole slider element
+@function sche-slide($class) {
+    @return ".cms-element-zen-image-slider .image-slider-item-container.#{$class}, "
+        + ".cms-element-zen-image-slider.#{$class} .image-slider-item-container";
+}
 
 $sche-slide-vertical: (
     top: flex-start,
@@ -45,7 +50,7 @@ $sche-slide-horizontal: (
 @each $viewport in m, t, d {
     @include sche-slide-viewport($viewport) {
         @each $name, $value in $sche-slide-vertical {
-            #{$sche-slide-item}.sche-slide-#{$viewport}-#{$name} {
+            #{sche-slide("sche-slide-#{$viewport}-#{$name}")} {
                 .zen-image-slider-item-content-container {
                     align-items: $value;
                 }
@@ -57,7 +62,7 @@ $sche-slide-horizontal: (
         }
 
         @each $name, $value in $sche-slide-horizontal {
-            #{$sche-slide-item}.sche-slide-#{$viewport}-#{$name} {
+            #{sche-slide("sche-slide-#{$viewport}-#{$name}")} {
                 .zen-image-slider-item-content-container {
                     justify-content: $value;
                 }
@@ -68,19 +73,19 @@ $sche-slide-horizontal: (
             }
         }
 
-        #{$sche-slide-item}.sche-slide-#{$viewport}-small {
+        #{sche-slide("sche-slide-#{$viewport}-small")} {
             --sche-slide-scale: 0.75;
         }
 
-        #{$sche-slide-item}.sche-slide-#{$viewport}-large {
+        #{sche-slide("sche-slide-#{$viewport}-large")} {
             --sche-slide-scale: 1.25;
         }
 
-        #{$sche-slide-item}.sche-slide-#{$viewport}-light {
+        #{sche-slide("sche-slide-#{$viewport}-light")} {
             --sche-slide-color: #ffffff;
         }
 
-        #{$sche-slide-item}.sche-slide-#{$viewport}-dark {
+        #{sche-slide("sche-slide-#{$viewport}-dark")} {
             --sche-slide-color: #333333;
         }
     }
