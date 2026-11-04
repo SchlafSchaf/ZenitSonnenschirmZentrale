@@ -55,7 +55,7 @@
                        href="https://www.youtube.com/watch?v={{ tile.videoId }}"
                        data-ajax-modal="true"
                        data-url="{{ path('frontend.sche.video-modal', { videoId: tile.videoId }) }}"
-                       data-modal-class="modal-xl sche-video-modal-dialog"
+                       data-modal-class="sche-video-modal-dialog"
                        title="{{ 'sche.listingTile.videoTitle'|trans({ '%name%': tile.manufacturer ~ ' ' ~ tile.model })|striptags }}">
                         {{ 'sche.listingTile.video'|trans|sw_sanitize }}
                     </a>
