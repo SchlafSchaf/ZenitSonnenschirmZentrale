@@ -23,6 +23,11 @@
         "productBox": {
             "cta": "View product",
             "sale": "Sale"
+        },
+        "listingTile": {
+            "price": "Price",
+            "more": "All %model% at a glance",
+            "videoTitle": "%name% video"
         }
     }
 }

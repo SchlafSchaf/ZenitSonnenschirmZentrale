@@ -1,0 +1,14 @@
+{% sw_extends '@Storefront/storefront/component/product/card/box.html.twig' %}
+
+{# Special tile instead of the product box on the umbrella category pages (extension scheListingTile, set by
+   ScheSw6Core's ListingTileSubscriber when the product has all tile contents) #}
+
+{% block component_product_box_include %}
+    {% if product.extensions.scheListingTile is defined %}
+        {% sw_include '@zenitSonnenschirmZentrale/storefront/sche/listing-tile.html.twig' with {
+            tile: product.extensions.scheListingTile
+        } %}
+    {% else %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}
