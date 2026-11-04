@@ -3,6 +3,26 @@
         "cms": {
             "collapseClose": "Text einklappen",
             "brandLogosHeadline": "Unsere Top Marken"
+        },
+        "footer": {
+            "hotlineHeadline": "Beratung / Verkauf",
+            "hotlineIntro": "Sie haben Fragen oder möchten eine fachkundige Beratung?",
+            "hotlineCall": "Rufen Sie uns an:",
+            "phone": "+ 49 821 - 999 764 00",
+            "phoneLink": "+4982199976400",
+            "email": "info@sonnenschirm-zentrale.de",
+            "showroomIntro": "Oder vereinbaren Sie einen persönlichen Beratungstermin in unserer Ausstellung in Augsburg",
+            "address": "Sterzinger Str. 12, 86165 Augsburg",
+            "copyright": "Copyright © 2016 - Sonnenschirm-Zentrale.de - Alle Rechte vorbehalten",
+            "includeVat": "* Alle Preise inkl. gesetzl. Mehrwertsteuer zzgl. <a data-url=\"%url%\" href=\"%url%\" data-modal-class=\"modal-xl\" data-ajax-modal=\"true\">Versandkosten</a>, wenn nicht anders beschrieben<br>¹ Unser bisheriger Verkaufspreis inklusive Mehrwertsteuer<br>² Versandkostenfrei versenden wir innerhalb der Länder DE und AT die Artikel der Kategorien Schirme und Zubehör. Für Artikel der Kategorie Ersatzteile fallen Versandkosten in Höhe von <span style=\"white-space: nowrap\">5 €</span> an. Der Versand auf deutsche und ausländische Inseln ist ausgeschlossen. Der Versand ins Ausland wird mit <span style=\"white-space: nowrap\">89 €</span> berechnet. Nähere Informationen erhalten Sie auf unserer <a data-url=\"%url%\" href=\"%url%\" data-modal-class=\"modal-xl\" data-ajax-modal=\"true\">Versandkostenseite</a><br>³ Für die Zahlungsart Vorkasse wird ein Skonto von 5% gewährt.<br>⁴ Produktionsartikel sind Waren die nicht vorgefertigt sind und für deren Herstellung eine individuelle Auswahl oder Bestimmung durch den Verbraucher maßgeblich ist und eindeutig auf die persönlichen Bedürfnisse des Verbrauchers zugeschnitten sind. Daher kann das Widerrufsrecht bei diesen Artikeln je nach Kundenspezifikation nicht angewendet werden.",
+            "showroomLabel": "Unsere Ausstellung",
+            "showroomTitle": "Sonnenschirm-Zentrale Ausstellung in Augsburg",
+            "showroomUrl": "/ueber-uns#soze-oeffnungszeiten",
+            "socialHeadline": "Social Media"
+        },
+        "productBox": {
+            "cta": "Produkt ansehen",
+            "sale": "Sale"
         }
     }
 }

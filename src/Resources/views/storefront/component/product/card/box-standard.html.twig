@@ -1,0 +1,27 @@
+{% sw_extends '@Storefront/storefront/component/product/card/box-standard.html.twig' %}
+
+{# Product box of the Zentrale as in SW5: yellow "Produkt ansehen" bar below the image, subtitle below the name
+   (custom field sche_listing_subtitle), no description #}
+
+{% block component_product_box_image %}
+    {{ parent() }}
+
+    <a class="sche-product-box-cta"
+       href="{{ seoUrl('frontend.detail.page', { productId: id }) }}"
+       title="{{ name }}"
+       tabindex="-1">
+        {{ 'sche.productBox.cta'|trans|sw_sanitize }}
+    </a>
+{% endblock %}
+
+{% block zen_component_product_box_name_variant_switcher_after %}
+    {% set scheSubtitle = product.translated.customFields.sche_listing_subtitle ?? null %}
+
+    {% if scheSubtitle %}
+        <div class="sche-product-box-subtitle">{{ scheSubtitle }}</div>
+    {% endif %}
+
+    {{ parent() }}
+{% endblock %}
+
+{% block component_product_box_description %}{% endblock %}

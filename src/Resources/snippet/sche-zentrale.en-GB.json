@@ -3,6 +3,26 @@
         "cms": {
             "collapseClose": "Show less",
             "brandLogosHeadline": "Our top brands"
+        },
+        "footer": {
+            "hotlineHeadline": "Advice / Sales",
+            "hotlineIntro": "Do you have questions or would you like expert advice?",
+            "hotlineCall": "Call us:",
+            "phone": "+ 49 821 - 999 764 00",
+            "phoneLink": "+4982199976400",
+            "email": "info@sonnenschirm-zentrale.de",
+            "showroomIntro": "Or make an appointment for personal advice in our showroom in Augsburg",
+            "address": "Sterzinger Str. 12, 86165 Augsburg",
+            "copyright": "Copyright © 2016 - Sonnenschirm-Zentrale.de - All rights reserved",
+            "includeVat": "* All prices incl. VAT plus <a data-url=\"%url%\" href=\"%url%\" data-modal-class=\"modal-xl\" data-ajax-modal=\"true\">shipping costs</a>, unless stated otherwise<br>¹ Our previous selling price incl. VAT<br>² We ship the items of the categories umbrellas and accessories free of charge within Germany and Austria. Spare parts are charged with shipping costs of <span style=\"white-space: nowrap\">5 €</span>. We do not ship to German or foreign islands. Shipping abroad is charged with <span style=\"white-space: nowrap\">89 €</span>. Further information on our <a data-url=\"%url%\" href=\"%url%\" data-modal-class=\"modal-xl\" data-ajax-modal=\"true\">shipping costs page</a><br>³ A discount of 5% is granted for payment in advance.<br>⁴ Production items are goods that are not prefabricated and are made according to the individual choice or specification of the customer and clearly tailored to their personal needs. The right of withdrawal may therefore not apply to these items, depending on the customer specification.",
+            "showroomLabel": "Our showroom",
+            "showroomTitle": "Sonnenschirm-Zentrale showroom in Augsburg",
+            "showroomUrl": "/ueber-uns#soze-oeffnungszeiten",
+            "socialHeadline": "Social media"
+        },
+        "productBox": {
+            "cta": "View product",
+            "sale": "Sale"
         }
     }
 }

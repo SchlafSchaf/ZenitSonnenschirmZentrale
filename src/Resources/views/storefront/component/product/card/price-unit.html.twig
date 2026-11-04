@@ -1,0 +1,25 @@
+{% sw_extends '@Storefront/storefront/component/product/card/price-unit.html.twig' %}
+
+{# Price of the product box as in SW5: the list price struck through in red with the footnote mark ¹ of "unser
+   bisheriger Verkaufspreis" (footnotes of the Zentrale: sche.footer.includeVat) on its own line, below it the price
+   with "ab" and the star of the VAT footnote (general.star) #}
+
+{% block component_product_box_from_price %}{% endblock %}
+
+{% block component_product_box_main_price %}
+    {% if isListPrice and not displayFrom and not displayFromVariants %}
+        <span class="sche-list-price">
+            <span class="visually-hidden">{{ 'listing.regularPriceLabel'|trans|sw_sanitize }}</span>
+            <s class="sche-list-price__price">{{ price.listPrice.price|currency }}</s>
+            <sup class="sche-list-price__hint">{{ 'general.high1'|trans|sw_sanitize }}</sup>
+        </span>
+    {% endif %}
+
+    <span class="product-price">
+        {% if displayFrom or (displayParent and hasDifferentPrice and hasRange and totalVariants|length > 1) %}
+            <small class="sche-from-price">{{ 'listing.listingTextFrom'|trans|lower|sw_sanitize }}</small>
+        {% endif %}
+
+        {{ price.unitPrice|currency }} {{ 'general.star'|trans|sw_sanitize }}
+    </span>
+{% endblock %}

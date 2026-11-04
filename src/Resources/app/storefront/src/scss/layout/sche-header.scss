@@ -1,0 +1,34 @@
+// Header der Zentrale wie in SW5. Farben, Höhen, Schrift und Navigation kommen aus der Theme-Konfiguration;
+// hier steht nur, was Gravity nicht einstellen kann: das runde Suchfeld, die runden Icons ohne Rahmen und die
+// Trennlinien der Hauptnavigation.
+
+// Suchfeld rund wie in SW5
+.header-main .header-search-input {
+    border-radius: 2rem;
+}
+
+.header-main .header-search-btn {
+    border-radius: 0 2rem 2rem 0;
+}
+
+// Konto, Merkzettel und Warenkorb als runde Icons ohne Rahmen und ohne Gravitys Ring beim Überfahren (Rahmen und
+// Ring ließen am Rand des Kreises einen hellen Spalt sehen)
+.header-main .header-actions-col .btn {
+    border: 0;
+    border-radius: 50%;
+
+    &,
+    &:hover,
+    &:active {
+        box-shadow: none;
+    }
+}
+
+// Hauptnavigation: senkrechte Trennlinien zwischen den Punkten wie in SW5 (Trenner in der Konfiguration: keiner)
+.main-navigation-menu-list .main-navigation-link {
+    border-right: 1px solid #dbdbdb;
+}
+
+.main-navigation-menu-list .nav-item:first-child .main-navigation-link {
+    border-left: 1px solid #dbdbdb;
+}
