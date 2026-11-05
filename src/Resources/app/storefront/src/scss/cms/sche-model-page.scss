@@ -107,10 +107,16 @@ $sche-model-border: #e3e3e6;
     }
 }
 
-// Easy | Produktbox | Individual
+// Easy | Produktbox | Individual; auf dem Handy erst beide Varianten, dann die Produktbox
 .sche-model-variants {
     .cms-element-product-box {
         height: 100%;
+    }
+
+    @include media-breakpoint-down(md) {
+        .row > :nth-child(2) {
+            order: 3;
+        }
     }
 }
 
