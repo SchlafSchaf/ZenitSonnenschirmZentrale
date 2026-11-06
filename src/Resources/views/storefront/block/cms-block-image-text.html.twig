@@ -1,0 +1,18 @@
+{% sw_extends '@Storefront/storefront/block/cms-block-image-text.html.twig' %}
+
+{# Without an image (most categories have none - the category layout maps category.media) the text takes the full
+   width instead of leaving the left half empty #}
+
+{% block block_image_text %}
+    {% set scheImage = block.slots.getSlot('left') %}
+
+    {% if scheImage.type == 'image' and scheImage.data.media is empty %}
+        {% set element = block.slots.getSlot('right') %}
+
+        <div class="col-12" data-cms-element-id="{{ element.id }}">
+            {% sw_include '@Storefront/storefront/element/cms-element-' ~ element.type ~ '.html.twig' ignore missing %}
+        </div>
+    {% else %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}
