@@ -1,0 +1,23 @@
+{% sw_extends '@Storefront/storefront/element/cms-element-category-name.html.twig' %}
+
+{# Logo next to the category heading (category custom field sche_category_logo, ScheSw6Core) - the manufacturer
+   logo of the manufacturer pages #}
+
+{% block element_category_name_inner %}
+    {% set scheCategory = page.category ?? page.header.navigation.active ?? null %}
+    {% set scheLogoId = scheCategory.translated.customFields.sche_category_logo ?? null %}
+    {% set scheLogo = scheLogoId and not config.content.isStatic ? searchMedia([scheLogoId], context.context).first : null %}
+
+    {% if scheLogo %}
+        <div class="sche-category-heading">
+            <h1 class="cms-element-category-name-headline">
+                {{ element.data.content|raw }}
+            </h1>
+            <img class="sche-category-heading__logo"
+                 src="{{ scheLogo.url }}"
+                 alt="{{ scheLogo.translated.alt|default(element.data.content|striptags ~ ' Logo') }}">
+        </div>
+    {% else %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}

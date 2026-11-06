@@ -1,0 +1,22 @@
+// Logo rechts neben der Kategorie-Überschrift (Kategorie-Feld sche_category_logo), z. B. auf den Herstellerseiten.
+// Template: views/storefront/element/cms-element-category-name.html.twig
+.sche-category-heading {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+
+    .cms-element-category-name-headline {
+        margin-bottom: 0;
+    }
+
+    // spezifischer als Gravitys Bildregel in Textelementen (height: auto)
+    .sche-category-heading__logo {
+        flex-shrink: 0;
+        width: auto;
+        max-width: 11rem;
+        height: 3.5rem;
+        object-fit: contain;
+    }
+}
