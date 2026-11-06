@@ -297,3 +297,125 @@ $sche-model-border: #e3e3e6;
         @include sche-model-button;
     }
 }
+
+// Modellübersicht (Layout "Sonnenschirm-Zentrale | Modellübersicht", Master C): je Modell eine Zeile mit Bild,
+// Name, Claim, Text und Datenblatt (Generator ~/projects/claude/Layouts/tools/modelluebersichten.py)
+.sche-model-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.sche-model-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    overflow: hidden;
+    border: 1px solid $sche-model-border;
+    border-radius: $sche-model-radius;
+    background: #ffffff;
+    transition: box-shadow 0.2s ease;
+
+    @include media-breakpoint-up(md) {
+        grid-template-columns: 2fr 3fr;
+    }
+
+    @include media-breakpoint-up(lg) {
+        grid-template-columns: 2fr 4fr 1.2fr;
+    }
+
+    &:hover {
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+
+        .sche-model-row__image img {
+            transform: scale(1.05);
+        }
+    }
+
+    // das Bild füllt die Höhe des Textes (hochformatige SW5-Bilder bestimmen nicht die Zeilenhöhe)
+    &__image {
+        display: block;
+        position: relative;
+        min-height: 14rem;
+        overflow: hidden;
+
+        img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+    }
+
+    &__body {
+        display: flex;
+        flex-direction: column;
+        padding: 1.25rem;
+        border-top: 4px solid $sche-yellow;
+
+        @include media-breakpoint-up(md) {
+            border-top: 0;
+            border-left: 4px solid $sche-yellow;
+        }
+
+        p {
+            margin-bottom: 0.5rem;
+        }
+    }
+
+    .sche-model-page &__title {
+        margin: 0;
+        padding: 0;
+        color: $sche-text-dark;
+        font-size: 1.375rem;
+
+        &::after {
+            display: none;
+        }
+    }
+
+    &__claim {
+        color: $sche-grey;
+        @include sche-headline-font;
+        font-size: 0.875rem;
+        text-transform: uppercase;
+    }
+
+    &__actions {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.5rem 1.5rem;
+        margin-top: auto;
+
+        .sche-model-facts__button {
+            @include sche-model-button;
+        }
+    }
+
+    // Datenblatt-Cover nur ab Desktop
+    &__cover {
+        display: none;
+
+        @include media-breakpoint-up(lg) {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            background: $sche-light-grey;
+        }
+
+        img {
+            max-width: 100%;
+            max-height: 12rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transform: rotate(-3deg);
+            transition: transform 0.2s ease;
+        }
+
+        &:hover img {
+            transform: rotate(0);
+        }
+    }
+}
