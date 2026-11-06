@@ -298,6 +298,29 @@ $sche-model-border: #e3e3e6;
     }
 }
 
+// Video-Link im Text (views/storefront/element/cms-element-text.html.twig macht daraus den Overlay-Link)
+.sche-video-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    color: $sche-text-dark;
+    @include sche-headline-font;
+    text-decoration: none;
+
+    &::before {
+        content: "";
+        width: 1.25rem;
+        height: 1.25rem;
+        background-color: $sche-yellow;
+        mask: url("#{$app-css-relative-asset-path}/sche/icons/play-circle.svg") center / contain no-repeat;
+    }
+
+    &:hover {
+        color: $sche-yellow;
+        text-decoration: none;
+    }
+}
+
 // Modellübersicht (Layout "Sonnenschirm-Zentrale | Modellübersicht", Master C): je Modell eine Zeile mit Bild,
 // Name, Claim, Text und Datenblatt (Generator ~/projects/claude/Layouts/tools/modelluebersichten.py)
 .sche-model-list {
@@ -382,12 +405,20 @@ $sche-model-border: #e3e3e6;
         text-transform: uppercase;
     }
 
+    // auf dem Handy immer untereinander (Button, Datenblatt, Video), ab Tablet in einer Reihe
     &__actions {
         display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        gap: 0.5rem 1.5rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
         margin-top: auto;
+
+        @include media-breakpoint-up(md) {
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.5rem 1.5rem;
+        }
 
         .sche-model-facts__button {
             @include sche-model-button;
