@@ -5,6 +5,16 @@
 {% block element_text_inner %}
     {% set content = element.data.content %}
 
+    {# YouTube links with the class sche-video-link open in the video overlay (AjaxModal + ScheSw6Core route
+       frontend.sche.video-modal) - Shopware strips data-* attributes from CMS texts, so they are added here #}
+    {% if 'sche-video-link' in content %}
+        {% set scheVideoUrl = path('frontend.sche.video-modal', { videoId: 'xxxxxxxxxxx' })|replace({ 'xxxxxxxxxxx': '$1' }) %}
+        {% set content = content|preg_replace(
+            '#<a class="sche-video-link" href="https://www\\.youtube\\.com/watch\\?v=([A-Za-z0-9_-]{11})"#',
+            '<a class="sche-video-link" href="https://www.youtube.com/watch?v=$1" data-ajax-modal="true" data-url="' ~ scheVideoUrl ~ '" data-modal-class="sche-video-modal-dialog"'
+        ) %}
+    {% endif %}
+
     {% if '[sche-marken]' in content %}
         {% set brandLogos %}
             {% sw_include '@Storefront/storefront/sche/brand-logos.html.twig' %}
