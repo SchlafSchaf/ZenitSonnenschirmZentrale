@@ -10,9 +10,19 @@
         display: none;
     }
 
+    // Pfeil passend zur Schriftgröße (Shopwares Standard-Icon ist 22 px groß)
     .icon {
         display: inline-flex;
+        width: 0.75rem;
+        height: 0.75rem;
+        margin-left: 0.25rem;
+        vertical-align: middle;
         transition: transform 0.2s ease;
+
+        svg {
+            width: 100%;
+            height: 100%;
+        }
     }
 
     &[aria-expanded="true"] .icon {
